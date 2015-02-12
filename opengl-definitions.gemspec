@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.email         = ['silver.phoenix99@gmail.com']
   s.summary       = %q{Opengl definitions for Ruby.}
   s.description   = %q{Opengl definitions for Ruby. Supports up to GL 4.5.}
-  s.homepage      = ''
+  s.homepage      = 'https://github.com/SilverPhoenix99/opengl-definitions'
   s.license       = 'MIT'
   s.files         = Dir['lib/**/*.rb']
   s.require_paths = ['lib']
