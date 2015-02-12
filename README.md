@@ -7,4 +7,6 @@ They can then be used with FFI, for example.
 
 ## Installation
 
+(Warning: gem not yet released)
+
     $ gem install opengl-definitions
