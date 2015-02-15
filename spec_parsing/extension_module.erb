@@ -5,10 +5,10 @@ module <%= ext.name %>
   <% end %>
   <% if req.profile == 'compatibility' %>
   module Compatibility
-<%= render :module_content, ident: 2, locals: { req: req } %>
+<%= render_content(req, 2) %>
   end
   <% else %>
-<%= render :module_content, ident: 1, locals: { req: req } %>
+<%= render_content(req, 1) %>
   <% end %>
 <% end %>
 end

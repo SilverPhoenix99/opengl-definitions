@@ -140,10 +140,18 @@ def render(template_name, options = {})
   locals[:ident] = ident if ident && ident > 0
 
   text = template.result(locals)
-  if ident && ident > 0
-    text = text.each_line.map { |l| '  ' * ident + l }.join
-  end
-  text
+  return text unless ident && ident > 0
+  text.each_line.map { |l| '  ' * ident + l }.join
+end
+
+def render_content(req, ident = 0)
+  text = %w'constants callbacks functions'.
+    map { |c| render c, locals: { req: req } }.
+    reject { |s| s.empty? }.
+    join($/ * 2)
+
+  return text unless ident && ident > 0
+  text.each_line.map { |l| '  ' * ident + l }.join
 end
 
 template = Erubis::Eruby.new(File.read(File.expand_path('extension_module.erb',__dir__)));
