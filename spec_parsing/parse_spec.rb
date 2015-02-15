@@ -48,6 +48,11 @@ class Function
   def mapped_params
     ([mapped_ret] + @params.map(&:mapped_type)).map { |t| ":#{t}" }.join(', ')
   end
+
+  def mapped(max_len = nil)
+    max_len ||= @name.length
+    "#@name:#{ ' ' * (max_len - @name.length) } [ #{ mapped_params } ].freeze"
+  end
 end
 
 class Param

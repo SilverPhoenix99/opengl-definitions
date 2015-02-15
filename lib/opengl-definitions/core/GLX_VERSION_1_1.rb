@@ -1,9 +1,11 @@
-module GLX_VERSION_1_1
-  VENDOR     = 0x1
-  VERSION    = 0x2
-  EXTENSIONS = 0x3
+# Unlike other extensions, functions from this module are not pointers.
 
-  OPTIONS = { ffi: true }.freeze
+module GLX_VERSION_1_1
+  module Constants
+    GLX_VENDOR     = 0x1
+    GLX_VERSION    = 0x2
+    GLX_EXTENSIONS = 0x3
+  end
 
   FUNCTIONS = {
     #const char* glXGetClientString (Display *dpy, int name)

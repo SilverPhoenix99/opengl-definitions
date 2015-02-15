@@ -1,11 +1,13 @@
-module GLX_VERSION_1_4
-  SAMPLE_BUFFERS = 100000
-  SAMPLES        = 100001
+# Unlike other extensions, functions from this module are not pointers.
 
-  OPTIONS = { ffi: true }.freeze
+module GLX_VERSION_1_4
+  module Constants
+    GLX_SAMPLE_BUFFERS = 100000
+    GLX_SAMPLES        = 100001
+  end
 
   FUNCTIONS = {
     #void ( * glXGetProcAddress (const GLubyte *procName)) (void)
-    glXGetProcAddress: [ :pointer,:string ].freeze
+    glXGetProcAddress: [ :pointer, :string ].freeze
   }.freeze
 end

@@ -14,3 +14,4 @@ They can then be used with FFI, for example.
 ## Room for improvement
 
 * Semantic enumerable parameters: restrics the possible GLenum's used in some parameters. Defined as groups in the spec.
+* Typed pointers (e.g.: use something like `[:pointer, :GLint]` instead of just `:pointer`).

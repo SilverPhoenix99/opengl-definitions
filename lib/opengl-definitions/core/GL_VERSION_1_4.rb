@@ -1,92 +1,96 @@
 module GL_VERSION_1_4
-  BLEND_DST_ALPHA               = 0x80CA
-  BLEND_DST_RGB                 = 0x80C8
-  BLEND_SRC_ALPHA               = 0x80CB
-  BLEND_SRC_RGB                 = 0x80C9
-  COLOR_SUM                     = 0x8458
-  COMPARE_R_TO_TEXTURE          = 0x884E
-  CURRENT_FOG_COORDINATE        = 0x8453
-  CURRENT_SECONDARY_COLOR       = 0x8459
-  DECR_WRAP                     = 0x8508
-  DEPTH_COMPONENT16             = 0x81A5
-  DEPTH_COMPONENT24             = 0x81A6
-  DEPTH_COMPONENT32             = 0x81A7
-  DEPTH_TEXTURE_MODE            = 0x884B
-  FOG_COORDINATE                = 0x8451
-  FOG_COORDINATE_ARRAY          = 0x8457
-  FOG_COORDINATE_ARRAY_POINTER  = 0x8456
-  FOG_COORDINATE_ARRAY_STRIDE   = 0x8455
-  FOG_COORDINATE_ARRAY_TYPE     = 0x8454
-  FOG_COORDINATE_SOURCE         = 0x8450
-  FRAGMENT_DEPTH                = 0x8452
-  GENERATE_MIPMAP               = 0x8191
-  GENERATE_MIPMAP_HINT          = 0x8192
-  INCR_WRAP                     = 0x8507
-  MAX_TEXTURE_LOD_BIAS          = 0x84FD
-  MIRRORED_REPEAT               = 0x8370
-  POINT_DISTANCE_ATTENUATION    = 0x8129
-  POINT_FADE_THRESHOLD_SIZE     = 0x8128
-  POINT_SIZE_MAX                = 0x8127
-  POINT_SIZE_MIN                = 0x8126
-  SECONDARY_COLOR_ARRAY         = 0x845E
-  SECONDARY_COLOR_ARRAY_POINTER = 0x845D
-  SECONDARY_COLOR_ARRAY_SIZE    = 0x845A
-  SECONDARY_COLOR_ARRAY_STRIDE  = 0x845C
-  SECONDARY_COLOR_ARRAY_TYPE    = 0x845B
-  TEXTURE_COMPARE_FUNC          = 0x884D
-  TEXTURE_COMPARE_MODE          = 0x884C
-  TEXTURE_DEPTH_SIZE            = 0x884A
-  TEXTURE_FILTER_CONTROL        = 0x8500
-  TEXTURE_LOD_BIAS              = 0x8501
+  module Constants
+    GL_BLEND_DST_ALPHA               = 0x80CA
+    GL_BLEND_DST_RGB                 = 0x80C8
+    GL_BLEND_SRC_ALPHA               = 0x80CB
+    GL_BLEND_SRC_RGB                 = 0x80C9
+    GL_COLOR_SUM                     = 0x8458
+    GL_COMPARE_R_TO_TEXTURE          = 0x884E
+    GL_CURRENT_FOG_COORDINATE        = 0x8453
+    GL_CURRENT_SECONDARY_COLOR       = 0x8459
+    GL_DECR_WRAP                     = 0x8508
+    GL_DEPTH_COMPONENT16             = 0x81A5
+    GL_DEPTH_COMPONENT24             = 0x81A6
+    GL_DEPTH_COMPONENT32             = 0x81A7
+    GL_DEPTH_TEXTURE_MODE            = 0x884B
+    GL_FOG_COORDINATE                = 0x8451
+    GL_FOG_COORDINATE_ARRAY          = 0x8457
+    GL_FOG_COORDINATE_ARRAY_POINTER  = 0x8456
+    GL_FOG_COORDINATE_ARRAY_STRIDE   = 0x8455
+    GL_FOG_COORDINATE_ARRAY_TYPE     = 0x8454
+    GL_FOG_COORDINATE_SOURCE         = 0x8450
+    GL_FRAGMENT_DEPTH                = 0x8452
+    GL_GENERATE_MIPMAP               = 0x8191
+    GL_GENERATE_MIPMAP_HINT          = 0x8192
+    GL_INCR_WRAP                     = 0x8507
+    GL_MAX_TEXTURE_LOD_BIAS          = 0x84FD
+    GL_MIRRORED_REPEAT               = 0x8370
+    GL_POINT_DISTANCE_ATTENUATION    = 0x8129
+    GL_POINT_FADE_THRESHOLD_SIZE     = 0x8128
+    GL_POINT_SIZE_MAX                = 0x8127
+    GL_POINT_SIZE_MIN                = 0x8126
+    GL_SECONDARY_COLOR_ARRAY         = 0x845E
+    GL_SECONDARY_COLOR_ARRAY_POINTER = 0x845D
+    GL_SECONDARY_COLOR_ARRAY_SIZE    = 0x845A
+    GL_SECONDARY_COLOR_ARRAY_STRIDE  = 0x845C
+    GL_SECONDARY_COLOR_ARRAY_TYPE    = 0x845B
+    GL_TEXTURE_COMPARE_FUNC          = 0x884D
+    GL_TEXTURE_COMPARE_MODE          = 0x884C
+    GL_TEXTURE_DEPTH_SIZE            = 0x884A
+    GL_TEXTURE_FILTER_CONTROL        = 0x8500
+    GL_TEXTURE_LOD_BIAS              = 0x8501
+  end
 
   FUNCTIONS = {
-    glBlendFuncSeparate: [ :void, :uint, :uint, :uint, :uint ].freeze,
-    glMultiDrawArrays: [ :void, :uint, :pointer, :pointer, :int ].freeze,
-    glMultiDrawElements: [ :void, :uint, :pointer, :uint, :pointer, :int ].freeze,
-    glPointParameterf: [ :void, :uint, :float ].freeze,
-    glPointParameterfv: [ :void, :uint, :pointer ].freeze,
-    glPointParameteri: [ :void, :uint, :int ].freeze,
-    glPointParameteriv: [ :void, :uint, :pointer ].freeze
+    glBlendFuncSeparate: [ :void, :GLenum, :GLenum, :GLenum, :GLenum ].freeze,
+    glMultiDrawArrays:   [ :void, :GLenum, :pointer, :pointer, :GLsizei ].freeze,
+    glMultiDrawElements: [ :void, :GLenum, :pointer, :GLenum, :pointer, :GLsizei ].freeze,
+    glPointParameterf:   [ :void, :GLenum, :GLfloat ].freeze,
+    glPointParameterfv:  [ :void, :GLenum, :pointer ].freeze,
+    glPointParameteri:   [ :void, :GLenum, :GLint ].freeze,
+    glPointParameteriv:  [ :void, :GLenum, :pointer ].freeze
   }.freeze
 
-  FUNCTIONS_COMPATIBILITY = {
-    glFogCoordd: [ :void, :double ].freeze,
-    glFogCoorddv: [ :void, :pointer ].freeze,
-    glFogCoordf: [ :void, :float ].freeze,
-    glFogCoordfv: [ :void, :pointer ].freeze,
-    glFogCoordPointer: [ :void, :uint, :int, :pointer ].freeze,
-    glSecondaryColor3b: [ :void, :char, :char, :char ].freeze,
-    glSecondaryColor3bv: [ :void, :pointer ].freeze,
-    glSecondaryColor3d: [ :void, :double, :double, :double ].freeze,
-    glSecondaryColor3dv: [ :void, :pointer ].freeze,
-    glSecondaryColor3f: [ :void, :float, :float, :float ].freeze,
-    glSecondaryColor3fv: [ :void, :pointer ].freeze,
-    glSecondaryColor3i: [ :void, :int, :int, :int ].freeze,
-    glSecondaryColor3iv: [ :void, :pointer ].freeze,
-    glSecondaryColor3s: [ :void, :short, :short, :short ].freeze,
-    glSecondaryColor3sv: [ :void, :pointer ].freeze,
-    glSecondaryColor3ub: [ :void, :uchar, :uchar, :uchar ].freeze,
-    glSecondaryColor3ubv: [ :void, :pointer ].freeze,
-    glSecondaryColor3ui: [ :void, :uint, :uint, :uint ].freeze,
-    glSecondaryColor3uiv: [ :void, :pointer ].freeze,
-    glSecondaryColor3us: [ :void, :ushort, :ushort, :ushort ].freeze,
-    glSecondaryColor3usv: [ :void, :pointer ].freeze,
-    glSecondaryColorPointer: [ :void, :int, :uint, :int, :pointer ].freeze,
-    glWindowPos2d: [ :void, :double, :double ].freeze,
-    glWindowPos2dv: [ :void, :pointer ].freeze,
-    glWindowPos2f: [ :void, :float, :float ].freeze,
-    glWindowPos2fv: [ :void, :pointer ].freeze,
-    glWindowPos2i: [ :void, :int, :int ].freeze,
-    glWindowPos2iv: [ :void, :pointer ].freeze,
-    glWindowPos2s: [ :void, :short, :short ].freeze,
-    glWindowPos2sv: [ :void, :pointer ].freeze,
-    glWindowPos3d: [ :void, :double, :double, :double ].freeze,
-    glWindowPos3dv: [ :void, :pointer ].freeze,
-    glWindowPos3f: [ :void, :float, :float, :float ].freeze,
-    glWindowPos3fv: [ :void, :pointer ].freeze,
-    glWindowPos3i: [ :void, :int, :int, :int ].freeze,
-    glWindowPos3iv: [ :void, :pointer ].freeze,
-    glWindowPos3s: [ :void, :short, :short, :short ].freeze,
-    glWindowPos3sv: [ :void, :pointer ].freeze
-  }.freeze
+  module Compatibility
+    FUNCTIONS = {
+      glFogCoordd:             [ :void, :GLdouble ].freeze,
+      glFogCoorddv:            [ :void, :pointer ].freeze,
+      glFogCoordf:             [ :void, :GLfloat ].freeze,
+      glFogCoordfv:            [ :void, :pointer ].freeze,
+      glFogCoordPointer:       [ :void, :GLenum, :GLsizei, :pointer ].freeze,
+      glSecondaryColor3b:      [ :void, :GLbyte, :GLbyte, :GLbyte ].freeze,
+      glSecondaryColor3bv:     [ :void, :pointer ].freeze,
+      glSecondaryColor3d:      [ :void, :GLdouble, :GLdouble, :GLdouble ].freeze,
+      glSecondaryColor3dv:     [ :void, :pointer ].freeze,
+      glSecondaryColor3f:      [ :void, :GLfloat, :GLfloat, :GLfloat ].freeze,
+      glSecondaryColor3fv:     [ :void, :pointer ].freeze,
+      glSecondaryColor3i:      [ :void, :GLint, :GLint, :GLint ].freeze,
+      glSecondaryColor3iv:     [ :void, :pointer ].freeze,
+      glSecondaryColor3s:      [ :void, :GLshort, :GLshort, :GLshort ].freeze,
+      glSecondaryColor3sv:     [ :void, :pointer ].freeze,
+      glSecondaryColor3ub:     [ :void, :GLubyte, :GLubyte, :GLubyte ].freeze,
+      glSecondaryColor3ubv:    [ :void, :pointer ].freeze,
+      glSecondaryColor3ui:     [ :void, :GLuint, :GLuint, :GLuint ].freeze,
+      glSecondaryColor3uiv:    [ :void, :pointer ].freeze,
+      glSecondaryColor3us:     [ :void, :GLushort, :GLushort, :GLushort ].freeze,
+      glSecondaryColor3usv:    [ :void, :pointer ].freeze,
+      glSecondaryColorPointer: [ :void, :GLint, :GLenum, :GLsizei, :pointer ].freeze,
+      glWindowPos2d:           [ :void, :GLdouble, :GLdouble ].freeze,
+      glWindowPos2dv:          [ :void, :pointer ].freeze,
+      glWindowPos2f:           [ :void, :GLfloat, :GLfloat ].freeze,
+      glWindowPos2fv:          [ :void, :pointer ].freeze,
+      glWindowPos2i:           [ :void, :GLint, :GLint ].freeze,
+      glWindowPos2iv:          [ :void, :pointer ].freeze,
+      glWindowPos2s:           [ :void, :GLshort, :GLshort ].freeze,
+      glWindowPos2sv:          [ :void, :pointer ].freeze,
+      glWindowPos3d:           [ :void, :GLdouble, :GLdouble, :GLdouble ].freeze,
+      glWindowPos3dv:          [ :void, :pointer ].freeze,
+      glWindowPos3f:           [ :void, :GLfloat, :GLfloat, :GLfloat ].freeze,
+      glWindowPos3fv:          [ :void, :pointer ].freeze,
+      glWindowPos3i:           [ :void, :GLint, :GLint, :GLint ].freeze,
+      glWindowPos3iv:          [ :void, :pointer ].freeze,
+      glWindowPos3s:           [ :void, :GLshort, :GLshort, :GLshort ].freeze,
+      glWindowPos3sv:          [ :void, :pointer ].freeze
+    }.freeze
+  end
 end
