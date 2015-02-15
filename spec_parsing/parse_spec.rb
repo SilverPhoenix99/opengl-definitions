@@ -131,6 +131,21 @@ input = nil
 
 require 'erubis'
 
+def render(template_name, options = {})
+  template = Erubis::Eruby.new(File.read(File.expand_path("#{template_name}.erb",__dir__)));
+
+  ident = options[:ident]
+
+  locals = options[:locals] || {}
+  locals[:ident] = ident if ident && ident > 0
+
+  text = template.result(locals)
+  if ident && ident > 0
+    text = text.each_line.map { |l| '  ' * ident + l }.join
+  end
+  text
+end
+
 template = Erubis::Eruby.new(File.read(File.expand_path('extension_module.erb',__dir__)));
 
 dir = File.expand_path('../lib/opengl-definitions/extensions', __dir__)

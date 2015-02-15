@@ -1,0 +1,5 @@
+module Constants
+<% req.constants.each do |name, value| %>
+  <%= name + ' ' * (req.max_constant_name_length - name.length) %> = <%= value %>
+<% end %>
+end

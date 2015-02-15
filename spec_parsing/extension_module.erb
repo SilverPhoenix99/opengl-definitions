@@ -5,54 +5,10 @@ module <%= ext.name %>
   <% end %>
   <% if req.profile == 'compatibility' %>
   module Compatibility
-    <% req.constants.each do |name, value| %>
-    <%= name + ' ' * (req.max_constant_name_length - name.length) %> = <%= value %>
-    <% end %>
-    <% unless req.callbacks.empty? %>
-      <% unless req.constants.empty? %>
-
-      <% end %>
-    CALLBACKS = {
-      <% req.callbacks.each do |_, cb| %>
-        <%= cb.name %>:<%= ' ' * (req.max_callback_name_length - cb.name.length) %> [ <%= cb.mapped_params %> ].freeze,
-      <% end %>
-    }.freeze
-    <% end %>
-    <% unless req.callbacks.empty? %>
-      <% unless req.constants.empty? && req.callbacks.empty? %>
-
-      <% end %>
-    FUNCTIONS = {
-    <% req.functions.each do |_, fun| %>
-        <%= fun.name %>:<%= ' ' * (req.max_function_name_length - fun.name.length) %> [ <%= fun.mapped_params %> ].freeze,
-    <% end %>
-    }.freeze
-    <% end %>
+<%= render :module_content, ident: 2, locals: { req: req } %>
   end
   <% else %>
-    <% req.constants.each do |name, value| %>
-  <%= name %><%= ' ' * (req.max_constant_name_length - name.length) %> = <%= value %>
-    <% end %>
-    <% unless req.callbacks.empty? %>
-      <% unless req.constants.empty? %>
-
-      <% end %>
-  CALLBACKS = {
-  <% req.callbacks.each do |_, cb| %>
-    <%= cb.name %>:<%= ' ' * (req.max_callback_name_length - cb.name.length) %> [ <%= cb.mapped_params %> ].freeze,
-  <% end %>
-  }.freeze
-    <% end %>
-    <% unless req.functions.empty? %>
-      <% unless req.constants.empty? && req.callbacks.empty? %>
-
-      <% end %>
-  FUNCTIONS = {
-  <% req.functions.each do |_, fun| %>
-    <%= fun.name %>:<%= ' ' * (req.max_function_name_length - fun.name.length) %> [ <%= fun.mapped_params %> ].freeze,
-  <% end %>
-  }.freeze
-    <% end %>
+<%= render :module_content, ident: 1, locals: { req: req } %>
   <% end %>
 <% end %>
 end

@@ -1,0 +1,5 @@
+FUNCTIONS = {
+<% req.functions.each do |_, fun| %>
+  <%= fun.name %>:<%= ' ' * (req.max_function_name_length - fun.name.length) %> [ <%= fun.mapped_params %> ].freeze,
+<% end %>
+}.freeze

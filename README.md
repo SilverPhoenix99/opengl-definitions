@@ -10,3 +10,7 @@ They can then be used with FFI, for example.
 (Warning: gem not yet released)
 
     $ gem install opengl-definitions
+
+## Room for improvement
+
+* Semantic enumerable parameters: restrics the possible GLenum's used in some parameters. Defined as groups in the spec.
