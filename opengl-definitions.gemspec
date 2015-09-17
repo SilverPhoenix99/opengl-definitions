@@ -11,6 +11,6 @@ Gem::Specification.new do |s|
   s.license       = 'MIT'
   s.files         = Dir['lib/**/*.rb']
   s.require_paths = ['lib']
-  s.add_development_dependency 'nokogiri', '~> 1.6'
+  s.add_development_dependency 'oga', '~> 1.3'
   s.add_development_dependency 'erubis', '~> 2.7'
 end

@@ -69,28 +69,30 @@ class Param
   end
 end
 
-require 'nokogiri'
+require 'oga'
 
-include Nokogiri::XML
-
-input = Document.parse(File.read(File.expand_path("../../#{ARGV[0]}.xml", __dir__)));
+input = Oga.parse_xml(File.read(File.expand_path("../../#{ARGV[0]}.xml", __dir__)));
 
 ENUMS = {}
+COMMANDS = {}
+CALLBACKS = {}
+EXTENSIONS = {}
+TYPES = %w'constants callbacks functions'
+
 input.xpath('//enums/enum').each do |enum|
-  ENUMS[ enum[:name] ] = enum[:value]
+  ENUMS[ enum.attribute(:name).text ] = enum.attribute(:value).text
 end;
 
-COMMANDS = {}
 input.xpath('//commands/command').each do |cmd|
   name = cmd.xpath('proto/name').first.text
 
   ret = cmd.xpath('proto').first.children.
-    select { |c| c.is_a?(Text) || c.node_name == 'ptype' }.
+    select { |c| c.is_a?(Oga::XML::Text) || c.name == 'ptype' }.
     map(&:text).join(' ').strip.gsub(/ +/, ' ')
 
   params = cmd.xpath('param').map do |param|
     type = param.children.
-      select { |c| c.is_a?(Text) || c.node_name == 'ptype' }.
+      select { |c| c.is_a?(Oga::XML::Text) || c.name == 'ptype' }.
       map(&:text).join(' ').strip.gsub(/ +/, ' ')
     Param.new(type, param.xpath('name').first.text)
   end
@@ -98,7 +100,6 @@ input.xpath('//commands/command').each do |cmd|
   COMMANDS[name] = Function.new(name, ret) { |fun| fun.params = params }
 end;
 
-CALLBACKS = {}
 input.xpath('//types/type[.//apientry]').each do |cb|
   fname  = cb.xpath('name').first.text
   ret    = cb.children.first.text.gsub(/typedef (\w+) \(/,'\1')
@@ -108,14 +109,14 @@ input.xpath('//types/type[.//apientry]').each do |cb|
   end
 end;
 
-EXTENSIONS = {}
-input.root.xpath('//extensions/extension').each do |extin|
+input.xpath('//extensions/extension').each do |extin|
   reqs = {}
   extin.xpath('require').each do |reqin|
-    api, profile = reqin[:api], reqin[:profile]
+    api, profile = reqin.attribute(:api), reqin.attribute(:profile)
+    api, profile = api && api.text, profile && profile.text
     reqout = ( reqs[[api, profile]] ||= Require.new(api, profile) )
     reqin.xpath('enum').each do |enum|
-      reqout.constants[ enum[:name] ] = ENUMS[ enum[:name] ]
+      reqout.constants[ enum.attribute(:name).text ] = ENUMS[ enum.attribute(:name).text ]
     end
     reqin.xpath('command/@name').each do |cmd_name|
       fname = cmd_name.text
@@ -126,7 +127,7 @@ input.root.xpath('//extensions/extension').each do |extin|
     end
   end
 
-  ename = extin[:name]
+  ename = extin.attribute(:name).text
   EXTENSIONS[ename] = Extension.new(ename) do |extout|
     extout.requires = reqs.values
   end
@@ -163,8 +164,12 @@ template = Erubis::Eruby.new(File.read(File.expand_path('extension_module.erb',_
 
 dir = File.expand_path('../lib/opengl-definitions/extensions', __dir__)
 
-EXTENSIONS.each do |name, ext|
-  count = ext.requires.map { |req| req.constants.length + req.callbacks.length + req.functions.length }.reduce(&:+).to_i
+extensions = EXTENSIONS.map do |name, ext|
+  count = ext.requires.map { |req| TYPES.map { |type| req.send(type).length }.reduce(&:+) }.reduce(&:+).to_i
+  [name, ext, count]
+end.keep_if { |_, _, count| count > 0 }
+
+extensions.each do |name, ext, count|
   puts "Extension #{ ext.name } has #{ ext.requires.length } requires. Count = #{ count.inspect }"
 
   if count > 0
@@ -173,3 +178,5 @@ EXTENSIONS.each do |name, ext|
     end
   end
 end;
+
+puts "Wrote #{extensions.count} extensions"
