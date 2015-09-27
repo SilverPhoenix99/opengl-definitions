@@ -1,141 +1,38 @@
-class Extension
-  attr_accessor :name,
-                :requires
-  def initialize(name)
-    @name, @requires = name, []
-    yield self if block_given?
-  end
-end
-
-class Require
-  attr_accessor :api,
-                :profile,
-                :constants,
-                :callbacks,
-                :functions
-  def initialize(api, profile)
-    @api, @profile, @constants, @callbacks, @functions = api, profile, {}, {}, {}
-    yield self if block_given?
-  end
-
-  def max_constant_name_length
-    constants.keys.map(&:length).max
-  end
-
-  def max_callback_name_length
-    callbacks.keys.map(&:length).max
-  end
-
-  def max_function_name_length
-    functions.keys.map(&:length).max
-  end
-end
-
-class Function
-  attr_accessor :name,
-                :ret,
-                :params
-  def initialize(name, ret)
-    @name, @ret, @params = name, ret, []
-    yield self if block_given?
-  end
-
-  def mapped_ret
-    return 'pointer' if /(\*|\])$/ =~ @ret
-    @ret.gsub('const ', '')
-  end
-
-  def mapped_params
-    ([mapped_ret] + @params.map(&:mapped_type)).map { |t| ":#{t}" }.join(', ')
-  end
-
-  def mapped(max_len = nil)
-    max_len ||= @name.length
-    "#@name:#{ ' ' * (max_len - @name.length) } [ #{ mapped_params } ].freeze"
-  end
-end
-
-class Param
-  attr_accessor :type,
-                :name
-  def initialize(type, name)
-    @type, @name = type, name
-    yield self if block_given?
-  end
-
-  def mapped_type
-    return 'pointer' if /(\*|\])$/ =~ @type
-    @type.gsub('const ', '')
+def map_value(value)
+  case value
+    when /(\*|\])$/      then 'pointer'
+    when 'unsigned int'  then 'uint'
+    when 'unsigned long' then 'ulong'
+    else                      value.gsub('const ', '')
   end
 end
 
 require 'oga'
 
+class Oga::XML::Element
+  def [](attr)
+    a = attribute(attr)
+    a && a.value
+  end
+end
+
+require_relative 'extension'
+require_relative 'require'
+require_relative 'function'
+require_relative 'param'
+
 input = Oga.parse_xml(File.read(File.expand_path("../../#{ARGV[0]}.xml", __dir__)));
 
-ENUMS = {}
-COMMANDS = {}
-CALLBACKS = {}
-EXTENSIONS = {}
-TYPES = %w'constants callbacks functions'
-
-input.xpath('//enums/enum').each do |enum|
-  ENUMS[ enum.attribute(:name).text ] = enum.attribute(:value).text
-end;
-
-input.xpath('//commands/command').each do |cmd|
-  name = cmd.xpath('proto/name').first.text
-
-  ret = cmd.xpath('proto').first.children.
-    select { |c| c.is_a?(Oga::XML::Text) || c.name == 'ptype' }.
-    map(&:text).join(' ').strip.gsub(/ +/, ' ')
-
-  params = cmd.xpath('param').map do |param|
-    type = param.children.
-      select { |c| c.is_a?(Oga::XML::Text) || c.name == 'ptype' }.
-      map(&:text).join(' ').strip.gsub(/ +/, ' ')
-    Param.new(type, param.xpath('name').first.text)
-  end
-
-  COMMANDS[name] = Function.new(name, ret) { |fun| fun.params = params }
-end;
-
-input.xpath('//types/type[.//apientry]').each do |cb|
-  fname  = cb.xpath('name').first.text
-  ret    = cb.children.first.text.gsub(/typedef (\w+) \(/,'\1')
-  params = cb.children.last.text[2..-3].gsub('*', '* ').split(',').map { |p| p.split(/ (?=\w+$)/) }
-  CALLBACKS[fname] = Function.new(fname, ret) do |fun|
-    fun.params = params.map { |type, pname| Param.new(type, pname) }
-  end
-end;
-
-input.xpath('//extensions/extension').each do |extin|
-  reqs = {}
-  extin.xpath('require').each do |reqin|
-    api, profile = reqin.attribute(:api), reqin.attribute(:profile)
-    api, profile = api && api.text, profile && profile.text
-    reqout = ( reqs[[api, profile]] ||= Require.new(api, profile) )
-    reqin.xpath('enum').each do |enum|
-      reqout.constants[ enum.attribute(:name).text ] = ENUMS[ enum.attribute(:name).text ]
-    end
-    reqin.xpath('command/@name').each do |cmd_name|
-      fname = cmd_name.text
-      reqout.functions[fname] = fun = COMMANDS[fname]
-      fun.params.map { |param| CALLBACKS[param.type] }.compact.each do |cb|
-        reqout.callbacks[cb.name] = cb
-      end
-    end
-  end
-
-  ename = extin.attribute(:name).text
-  EXTENSIONS[ename] = Extension.new(ename) do |extout|
-    extout.requires = reqs.values
-  end
-end;
+ENUMS      = Hash[input.xpath('//enums/enum').map { |enum| [enum[:name], enum[:value]] }];
+COMMANDS   = Hash[input.xpath('//commands/command').map { |cmd| Function.parse(cmd) }.map { |f| [f.name, f] }];
+CALLBACKS  = Hash[input.xpath('//types/type[.//apientry]').map { |cb| Function.parse_callback(cb) }.map { |cb| [cb.name, cb] }];
+EXTENSIONS = Hash[input.xpath('//extensions/extension').map { |extx| Extension.parse(extx) }.map { |ext| [ext.name, ext] }];
 
 input = nil
 
 require 'erubis'
+
+TYPES = %w'constants callbacks functions'
 
 def render(template_name, options = {})
   template = Erubis::Eruby.new(File.read(File.expand_path("#{template_name}.erb",__dir__)));
@@ -150,9 +47,9 @@ def render(template_name, options = {})
   text.each_line.map { |l| '  ' * ident + l }.join
 end
 
-def render_content(req, ident = 0)
-  text = %w'constants callbacks functions'.
-    map { |c| render c, locals: { req: req } }.
+def render_content(ext, ident = 0)
+  text = TYPES.
+    map { |c| render("templates/#{c}", locals: { ext: ext }).rstrip }.
     reject { |s| s.empty? }.
     join($/ * 2)
 
@@ -160,23 +57,21 @@ def render_content(req, ident = 0)
   text.each_line.map { |l| '  ' * ident + l }.join
 end
 
-template = Erubis::Eruby.new(File.read(File.expand_path('extension_module.erb',__dir__)));
+extensions = EXTENSIONS.map do |_, ext|
+  [ext, TYPES.map { |type| ext.send(type).length }.reduce(&:+)]
+end.keep_if { |_, count| count > 0 }
 
+template = Erubis::Eruby.new(File.read(File.expand_path('templates/extension_module.erb',__dir__)));
 dir = File.expand_path('../lib/opengl-definitions/extensions', __dir__)
+Dir.mkdir(dir) unless File.directory?(dir)
 
-extensions = EXTENSIONS.map do |name, ext|
-  count = ext.requires.map { |req| TYPES.map { |type| req.send(type).length }.reduce(&:+) }.reduce(&:+).to_i
-  [name, ext, count]
-end.keep_if { |_, _, count| count > 0 }
+extensions.each do |ext, count|
+  puts "Extension #{ ext.name }. Count = #{ count }"
 
-extensions.each do |name, ext, count|
-  puts "Extension #{ ext.name } has #{ ext.requires.length } requires. Count = #{ count.inspect }"
-
-  if count > 0
-    File.open(File.expand_path("#{name}.rb", dir), 'w+') do |file|
-      file.write(template.result(ext: ext))
-    end
+  File.open(File.expand_path("#{ ext.name }.rb", dir), 'w+') do |file|
+    file.write(template.result(ext: ext))
   end
+
 end;
 
 puts "Wrote #{extensions.count} extensions"

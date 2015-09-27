@@ -1,0 +1,8 @@
+<% unless ext.functions.empty? %>
+@functions = {
+  <% max_len = ext.max_function_name_length %>
+  <% ext.functions.each do |_, fun| %>
+  <%= fun.mapped(max_len) %>,
+  <% end %>
+}.freeze
+<% end %>

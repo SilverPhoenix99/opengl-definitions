@@ -1,6 +1,0 @@
-<% unless req.functions.empty? %>
-FUNCTIONS = {
-<% req.functions.each do |_, fun| %>
-  <%= fun.mapped(req.max_function_name_length) %>,
-<% end %>
-}.freeze<% end -%>

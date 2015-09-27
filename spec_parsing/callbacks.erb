@@ -1,6 +1,0 @@
-<% unless req.callbacks.empty? %>
-CALLBACKS = {
-<% req.callbacks.each do |_, cb| %>
-  <%= cb.name %>:<%= ' ' * (req.max_callback_name_length - cb.name.length) %> [ <%= cb.mapped_params %> ].freeze,
-<% end %>
-}.freeze<% end -%>
