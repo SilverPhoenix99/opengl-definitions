@@ -1,5 +1,5 @@
 module GL_VERSIONS_4_2
-  @extensions = [
+  Extensions = [
     :GL_ARB_base_instance,
     :GL_ARB_internalformat_query,
     :GL_ARB_shader_atomic_counters,

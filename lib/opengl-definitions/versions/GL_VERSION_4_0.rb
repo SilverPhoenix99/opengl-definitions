@@ -1,18 +1,20 @@
 module GL_VERSION_4_0
-  GL_INT_SAMPLER_CUBE_MAP_ARRAY            = 0x900E
-  GL_MAX_PROGRAM_TEXTURE_GATHER_COMPONENTS = 0x8F9F
-  GL_MAX_PROGRAM_TEXTURE_GATHER_OFFSET     = 0x8E5F
-  GL_MIN_PROGRAM_TEXTURE_GATHER_OFFSET     = 0x8E5E
-  GL_MIN_SAMPLE_SHADING_VALUE              = 0x8C37
-  GL_PROXY_TEXTURE_CUBE_MAP_ARRAY          = 0x900B
-  GL_SAMPLE_SHADING                        = 0x8C36
-  GL_SAMPLER_CUBE_MAP_ARRAY                = 0x900C
-  GL_SAMPLER_CUBE_MAP_ARRAY_SHADOW         = 0x900D
-  GL_TEXTURE_BINDING_CUBE_MAP_ARRAY        = 0x900A
-  GL_TEXTURE_CUBE_MAP_ARRAY                = 0x9009
-  GL_UNSIGNED_INT_SAMPLER_CUBE_MAP_ARRAY   = 0x900F
+  module Constants
+    INT_SAMPLER_CUBE_MAP_ARRAY            = 0x900E
+    MAX_PROGRAM_TEXTURE_GATHER_COMPONENTS = 0x8F9F
+    MAX_PROGRAM_TEXTURE_GATHER_OFFSET     = 0x8E5F
+    MIN_PROGRAM_TEXTURE_GATHER_OFFSET     = 0x8E5E
+    MIN_SAMPLE_SHADING_VALUE              = 0x8C37
+    PROXY_TEXTURE_CUBE_MAP_ARRAY          = 0x900B
+    SAMPLE_SHADING                        = 0x8C36
+    SAMPLER_CUBE_MAP_ARRAY                = 0x900C
+    SAMPLER_CUBE_MAP_ARRAY_SHADOW         = 0x900D
+    TEXTURE_BINDING_CUBE_MAP_ARRAY        = 0x900A
+    TEXTURE_CUBE_MAP_ARRAY                = 0x9009
+    UNSIGNED_INT_SAMPLER_CUBE_MAP_ARRAY   = 0x900F
+  end
 
-  @extensions = [
+  Extensions = [
     :GL_ARB_draw_indirect,
     :GL_ARB_gpu_shader5,
     :GL_ARB_gpu_shader_fp64,
@@ -26,13 +28,19 @@ module GL_VERSION_4_0
     :GL_ARB_transform_feedback3
   ].freeze
 
-  @functions = {
-    glBlendEquationi:         [ :void, :GLuint, :GLenum ].freeze,
-    glBlendEquationSeparatei: [ :void, :GLuint, :GLenum, :GLenum ].freeze,
-    glBlendFunci:             [ :void, :GLuint, :GLenum, :GLenum ].freeze,
-    glBlendFuncSeparatei:     [ :void, :GLuint, :GLenum, :GLenum, :GLenum, :GLenum ].freeze,
-    glMinSampleShading:       [ :void, :GLfloat ].freeze
-  }.freeze
+  module Functions
+    def glBlendEquationi(buf, mode) end
+    def glBlendEquationSeparatei(buf, modeRGB, modeAlpha) end
+    def glBlendFunci(buf, src, dst) end
+    def glBlendFuncSeparatei(buf, srcRGB, dstRGB, srcAlpha, dstAlpha) end
+    def glMinSampleShading(value) end
+
+    Parameters = {
+      glBlendEquationi:         [ :void, :GLuint, :GLenum ].freeze,
+      glBlendEquationSeparatei: [ :void, :GLuint, :GLenum, :GLenum ].freeze,
+      glBlendFunci:             [ :void, :GLuint, :GLenum, :GLenum ].freeze,
+      glBlendFuncSeparatei:     [ :void, :GLuint, :GLenum, :GLenum, :GLenum, :GLenum ].freeze,
+      glMinSampleShading:       [ :void, :GLfloat ].freeze
+    }.freeze
+  end
 end
-
-

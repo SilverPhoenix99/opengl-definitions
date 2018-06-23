@@ -1,5 +1,5 @@
 module GL_VERSION_4_5
-  @extensions = [
+  Extensions = [
     :GL_ARB_clip_control,
     :GL_ARB_conditional_render_inverted,
     :GL_ARB_cull_distance,

@@ -1,5 +1,5 @@
 module GL_VERSION_4_6
-  @extensions = [
+  Extensions = [
     :GL_ARB_gl_spirv,
     :GL_ARB_indirect_parameters,
     :GL_ARB_pipeline_statistics_query,

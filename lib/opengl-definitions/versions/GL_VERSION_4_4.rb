@@ -1,9 +1,11 @@
 module GL_VERSION_4_4
-  GL_MAX_VERTEX_ATTRIB_STRIDE                = 0x82E5
-  GL_PRIMITIVE_RESTART_FOR_PATCHES_SUPPORTED = 0x8221
-  GL_TEXTURE_BUFFER_BINDING                  = 0x8C2A
+  module Constants
+    MAX_VERTEX_ATTRIB_STRIDE                = 0x82E5
+    PRIMITIVE_RESTART_FOR_PATCHES_SUPPORTED = 0x8221
+    TEXTURE_BUFFER_BINDING                  = 0x8C2A
+  end
 
-  @extensions = [
+  Extensions = [
     :GL_ARB_buffer_storage,
     :GL_ARB_clear_texture,
     :GL_ARB_enhanced_layouts,

@@ -1,5 +1,11 @@
 module GL_VERSION_1_5
-  @functions = @functions.merge( {
-    glGetTexGendv: [ :void, :GLenum, :GLenum, :pointer ].freeze
-  } ).freeze
+  module Compatibility
+    module Functions
+      def glGetTexGendv(coord, pname, params) end
+
+      Parameters = {
+        glGetTexGendv: [ :void, :GLenum, :GLenum, :pointer ].freeze
+      }.freeze
+    end
+  end
 end

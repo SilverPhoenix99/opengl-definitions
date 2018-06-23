@@ -1,7 +1,9 @@
 module GL_VERSION_3_3
-  GL_VERTEX_ATTRIB_ARRAY_DIVISOR = 0x88FE
+  module Constants
+    VERTEX_ATTRIB_ARRAY_DIVISOR = 0x88FE
+  end
 
-  @extensions = [
+  Extensions = [
     :GL_ARB_explicit_attrib_location,
     :GL_ARB_shader_bit_encoding,
     :GL_ARB_blend_func_extended,
@@ -13,7 +15,11 @@ module GL_VERSION_3_3
     :GL_ARB_vertex_type_2_10_10_10_rev
   ].freeze
 
-  @functions = {
-    glVertexAttribDivisor: [ :void, :GLuint, :GLuint ].freeze
-  }.freeze
+  module Functions
+    def glVertexAttribDivisor(index, divisor) end
+
+    Parameters = {
+      glVertexAttribDivisor: [ :void, :GLuint, :GLuint ].freeze
+    }.freeze
+  end
 end

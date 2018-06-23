@@ -1,5 +1,5 @@
 <% unless ext.callbacks.empty? %>
-@callbacks = {
+Callbacks = {
   <% max_len = ext.max_callback_name_length %>
   <% ext.callbacks.each do |_, cb| %>
   <%= cb.mapped(max_len) %>,

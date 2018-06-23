@@ -1,6 +1,9 @@
 <% unless ext.constants.empty? %>
+module Constants
   <% max_len = ext.max_constant_name_length %>
   <% ext.constants.each do |name, value| %>
-<%= name + ' ' * (max_len - name.length) %> = <%= value %>
+    <% name = ext.clean_const_name(name) %>
+  <%= name + ' ' * (max_len - name.length) %> = <%= value %>
   <% end %>
+end
 <% end %>

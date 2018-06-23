@@ -1,8 +1,10 @@
 module GL_VERSION_4_3
-  GL_NUM_SHADING_LANGUAGE_VERSIONS = 0x82E9
-  GL_VERTEX_ATTRIB_ARRAY_LONG      = 0x874E
+  module Constants
+    NUM_SHADING_LANGUAGE_VERSIONS = 0x82E9
+    VERTEX_ATTRIB_ARRAY_LONG      = 0x874E
+  end
 
-  @extensions = [
+  Extensions = [
     :GL_ARB_arrays_of_arrays,
     :GL_ARB_clear_buffer_object,
     :GL_ARB_compute_shader,
@@ -27,4 +29,3 @@ module GL_VERSION_4_3
     :GL_KHR_debug
   ].freeze
 end
-

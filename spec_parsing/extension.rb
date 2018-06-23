@@ -10,8 +10,24 @@ class Extension
     @name, @constants, @callbacks, @functions = name, {}, {}, {}
   end
 
+  def prefix
+    @name[/^[^_]+/]
+  end
+
+  def clean_const_name(const_name, warn: true)
+    clean_name = const_name[/^(?:(GL|GLX|WGL)_)?\K(\d?).*$/]
+
+    if $1
+      raise ArgumentError, "expected constant `#{const_name}' to have prefix `#{prefix}'" unless $1 == prefix
+    else
+      puts "Warning: constant #{@name}::#{const_name} does not have an OpenGL prefix." if warn
+    end
+
+    $2 ? clean_name.prepend('N') : clean_name
+  end
+
   def max_constant_name_length
-    constants.keys.map(&:length).max
+    constants.keys.map { |name| clean_const_name(name, warn: false) }.map(&:length).max
   end
 
   def max_callback_name_length

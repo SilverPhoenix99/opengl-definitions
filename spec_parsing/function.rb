@@ -1,4 +1,6 @@
 class Function
+  KEYWORDS = Set.new(%w'end in')
+
   attr_accessor :name,
                 :ret,
                 :params
@@ -6,6 +8,13 @@ class Function
   def initialize(name, ret)
     @name, @ret, @params = name, ret, []
     yield self if block_given?
+  end
+
+  def signature
+    params = @params.map(&:name)
+      .map { |name| name[0].downcase + name[1..-1] }
+      .map { |name| KEYWORDS.include?(name) ? "#{name}_" : name }
+    "#@name(#{params.join(', ')})"
   end
 
   def mapped_params
