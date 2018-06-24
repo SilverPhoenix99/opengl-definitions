@@ -98,27 +98,15 @@ module GL_VERSION_1_3
     TRANSPOSE_TEXTURE_MATRIX       = 0x84E5
   end
 
-  module Functions
-    def glActiveTexture(texture) end
-    def glCompressedTexImage1D(target, level, internalformat, width, border, imageSize, data) end
-    def glCompressedTexImage2D(target, level, internalformat, width, height, border, imageSize, data) end
-    def glCompressedTexImage3D(target, level, internalformat, width, height, depth, border, imageSize, data) end
-    def glCompressedTexSubImage1D(target, level, xoffset, width, format, imageSize, data) end
-    def glCompressedTexSubImage2D(target, level, xoffset, yoffset, width, height, format, imageSize, data) end
-    def glCompressedTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data) end
-    def glGetCompressedTexImage(target, level, img) end
-    def glSampleCoverage(value, invert) end
-
-    Parameters = {
-      glActiveTexture:           [ :void, :GLenum ].freeze,
-      glCompressedTexImage1D:    [ :void, :GLenum, :GLint, :GLenum, :GLsizei, :GLint, :GLsizei, :pointer ].freeze,
-      glCompressedTexImage2D:    [ :void, :GLenum, :GLint, :GLenum, :GLsizei, :GLsizei, :GLint, :GLsizei, :pointer ].freeze,
-      glCompressedTexImage3D:    [ :void, :GLenum, :GLint, :GLenum, :GLsizei, :GLsizei, :GLsizei, :GLint, :GLsizei, :pointer ].freeze,
-      glCompressedTexSubImage1D: [ :void, :GLenum, :GLint, :GLint, :GLsizei, :GLenum, :GLsizei, :pointer ].freeze,
-      glCompressedTexSubImage2D: [ :void, :GLenum, :GLint, :GLint, :GLint, :GLsizei, :GLsizei, :GLenum, :GLsizei, :pointer ].freeze,
-      glCompressedTexSubImage3D: [ :void, :GLenum, :GLint, :GLint, :GLint, :GLint, :GLsizei, :GLsizei, :GLsizei, :GLenum, :GLsizei, :pointer ].freeze,
-      glGetCompressedTexImage:   [ :void, :GLenum, :GLint, :pointer ].freeze,
-      glSampleCoverage:          [ :void, :GLfloat, :GLboolean ].freeze
-    }.freeze
-  end
+  Functions = {
+    def glActiveTexture(texture) end => [ :void, :GLenum ].freeze,
+    def glCompressedTexImage1D(target, level, internalformat, width, border, imageSize, data) end => [ :void, :GLenum, :GLint, :GLenum, :GLsizei, :GLint, :GLsizei, :pointer ].freeze,
+    def glCompressedTexImage2D(target, level, internalformat, width, height, border, imageSize, data) end => [ :void, :GLenum, :GLint, :GLenum, :GLsizei, :GLsizei, :GLint, :GLsizei, :pointer ].freeze,
+    def glCompressedTexImage3D(target, level, internalformat, width, height, depth, border, imageSize, data) end => [ :void, :GLenum, :GLint, :GLenum, :GLsizei, :GLsizei, :GLsizei, :GLint, :GLsizei, :pointer ].freeze,
+    def glCompressedTexSubImage1D(target, level, xoffset, width, format, imageSize, data) end => [ :void, :GLenum, :GLint, :GLint, :GLsizei, :GLenum, :GLsizei, :pointer ].freeze,
+    def glCompressedTexSubImage2D(target, level, xoffset, yoffset, width, height, format, imageSize, data) end => [ :void, :GLenum, :GLint, :GLint, :GLint, :GLsizei, :GLsizei, :GLenum, :GLsizei, :pointer ].freeze,
+    def glCompressedTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data) end => [ :void, :GLenum, :GLint, :GLint, :GLint, :GLint, :GLsizei, :GLsizei, :GLsizei, :GLenum, :GLsizei, :pointer ].freeze,
+    def glGetCompressedTexImage(target, level, img) end => [ :void, :GLenum, :GLint, :pointer ].freeze,
+    def glSampleCoverage(value, invert) end => [ :void, :GLfloat, :GLboolean ].freeze,
+  }.freeze
 end

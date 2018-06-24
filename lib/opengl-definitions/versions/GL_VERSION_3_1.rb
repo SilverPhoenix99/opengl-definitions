@@ -41,17 +41,10 @@ module GL_VERSION_3_1
     :GL_ARB_uniform_buffer_object
   ].freeze
 
-  module Functions
-    def glDrawArraysInstanced(mode, first, count, instancecount) end
-    def glDrawElementsInstanced(mode, count, type, indices, instancecount) end
-    def glPrimitiveRestartIndex(index) end
-    def glTexBuffer(target, internalformat, buffer) end
-
-    Parameters = {
-      glDrawArraysInstanced:   [ :void, :GLenum, :GLint, :GLsizei, :GLsizei ].freeze,
-      glDrawElementsInstanced: [ :void, :GLenum, :GLsizei, :GLenum, :pointer, :GLsizei ].freeze,
-      glPrimitiveRestartIndex: [ :void, :GLuint ].freeze,
-      glTexBuffer:             [ :void, :GLenum, :GLenum, :GLuint ].freeze
-    }.freeze
-  end
+  Functions = {
+    def glDrawArraysInstanced(mode, first, count, instancecount) end => [ :void, :GLenum, :GLint, :GLsizei, :GLsizei ].freeze,
+    def glDrawElementsInstanced(mode, count, type, indices, instancecount) end => [ :void, :GLenum, :GLsizei, :GLenum, :pointer, :GLsizei ].freeze,
+    def glPrimitiveRestartIndex(index) end => [ :void, :GLuint ].freeze,
+    def glTexBuffer(target, internalformat, buffer) end => [ :void, :GLenum, :GLenum, :GLuint ].freeze,
+  }.freeze
 end

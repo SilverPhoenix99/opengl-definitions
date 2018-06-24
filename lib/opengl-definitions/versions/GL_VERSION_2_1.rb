@@ -25,21 +25,12 @@ module GL_VERSION_2_1
     SRGB8_ALPHA8                   = 0x8C43
   end
 
-  module Functions
-    def glUniformMatrix2x3fv(location, count, transpose, value) end
-    def glUniformMatrix2x4fv(location, count, transpose, value) end
-    def glUniformMatrix3x2fv(location, count, transpose, value) end
-    def glUniformMatrix3x4fv(location, count, transpose, value) end
-    def glUniformMatrix4x2fv(location, count, transpose, value) end
-    def glUniformMatrix4x3fv(location, count, transpose, value) end
-
-    Parameters = {
-      glUniformMatrix2x3fv: [ :void, :GLint, :GLsizei, :GLboolean, :pointer ].freeze,
-      glUniformMatrix2x4fv: [ :void, :GLint, :GLsizei, :GLboolean, :pointer ].freeze,
-      glUniformMatrix3x2fv: [ :void, :GLint, :GLsizei, :GLboolean, :pointer ].freeze,
-      glUniformMatrix3x4fv: [ :void, :GLint, :GLsizei, :GLboolean, :pointer ].freeze,
-      glUniformMatrix4x2fv: [ :void, :GLint, :GLsizei, :GLboolean, :pointer ].freeze,
-      glUniformMatrix4x3fv: [ :void, :GLint, :GLsizei, :GLboolean, :pointer ].freeze
-    }.freeze
-  end
+  Functions = {
+    def glUniformMatrix2x3fv(location, count, transpose, value) end => [ :void, :GLint, :GLsizei, :GLboolean, :pointer ].freeze,
+    def glUniformMatrix2x4fv(location, count, transpose, value) end => [ :void, :GLint, :GLsizei, :GLboolean, :pointer ].freeze,
+    def glUniformMatrix3x2fv(location, count, transpose, value) end => [ :void, :GLint, :GLsizei, :GLboolean, :pointer ].freeze,
+    def glUniformMatrix3x4fv(location, count, transpose, value) end => [ :void, :GLint, :GLsizei, :GLboolean, :pointer ].freeze,
+    def glUniformMatrix4x2fv(location, count, transpose, value) end => [ :void, :GLint, :GLsizei, :GLboolean, :pointer ].freeze,
+    def glUniformMatrix4x3fv(location, count, transpose, value) end => [ :void, :GLint, :GLsizei, :GLboolean, :pointer ].freeze,
+  }.freeze
 end

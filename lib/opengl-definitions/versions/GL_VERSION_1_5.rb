@@ -51,47 +51,25 @@ module GL_VERSION_1_5
     WRITE_ONLY                           = 0x88B9
   end
 
-  module Functions
-    def glBeginQuery(target, id) end
-    def glBindBuffer(target, buffer) end
-    def glBufferData(target, size, data, usage) end
-    def glBufferSubData(target, offset, size, data) end
-    def glDeleteBuffers(n, buffers) end
-    def glDeleteQueries(n, ids) end
-    def glEndQuery(target) end
-    def glGenBuffers(n, buffers) end
-    def glGenQueries(n, ids) end
-    def glGetBufferParameteriv(target, pname, params) end
-    def glGetBufferPointerv(target, pname, params) end
-    def glGetBufferSubData(target, offset, size, data) end
-    def glGetQueryiv(target, pname, params) end
-    def glGetQueryObjectiv(id, pname, params) end
-    def glGetQueryObjectuiv(id, pname, params) end
-    def glIsBuffer(buffer) end
-    def glIsQuery(id) end
-    def glMapBuffer(target, access) end
-    def glUnmapBuffer(target) end
-
-    Parameters = {
-      glBeginQuery:           [ :void, :GLenum, :GLuint ].freeze,
-      glBindBuffer:           [ :void, :GLenum, :GLuint ].freeze,
-      glBufferData:           [ :void, :GLenum, :GLsizeiptr, :pointer, :GLenum ].freeze,
-      glBufferSubData:        [ :void, :GLenum, :GLintptr, :GLsizeiptr, :pointer ].freeze,
-      glDeleteBuffers:        [ :void, :GLsizei, :pointer ].freeze,
-      glDeleteQueries:        [ :void, :GLsizei, :pointer ].freeze,
-      glEndQuery:             [ :void, :GLenum ].freeze,
-      glGenBuffers:           [ :void, :GLsizei, :pointer ].freeze,
-      glGenQueries:           [ :void, :GLsizei, :pointer ].freeze,
-      glGetBufferParameteriv: [ :void, :GLenum, :GLenum, :pointer ].freeze,
-      glGetBufferPointerv:    [ :void, :GLenum, :GLenum, :pointer ].freeze,
-      glGetBufferSubData:     [ :void, :GLenum, :GLintptr, :GLsizeiptr, :pointer ].freeze,
-      glGetQueryiv:           [ :void, :GLenum, :GLenum, :pointer ].freeze,
-      glGetQueryObjectiv:     [ :void, :GLuint, :GLenum, :pointer ].freeze,
-      glGetQueryObjectuiv:    [ :void, :GLuint, :GLenum, :pointer ].freeze,
-      glIsBuffer:             [ :GLboolean, :GLuint ].freeze,
-      glIsQuery:              [ :GLboolean, :GLuint ].freeze,
-      glMapBuffer:            [ :pointer, :GLenum, :GLenum ].freeze,
-      glUnmapBuffer:          [ :GLboolean, :GLenum ].freeze
-    }.freeze
-  end
+  Functions = {
+    def glBeginQuery(target, id) end => [ :void, :GLenum, :GLuint ].freeze,
+    def glBindBuffer(target, buffer) end => [ :void, :GLenum, :GLuint ].freeze,
+    def glBufferData(target, size, data, usage) end => [ :void, :GLenum, :GLsizeiptr, :pointer, :GLenum ].freeze,
+    def glBufferSubData(target, offset, size, data) end => [ :void, :GLenum, :GLintptr, :GLsizeiptr, :pointer ].freeze,
+    def glDeleteBuffers(n, buffers) end => [ :void, :GLsizei, :pointer ].freeze,
+    def glDeleteQueries(n, ids) end => [ :void, :GLsizei, :pointer ].freeze,
+    def glEndQuery(target) end => [ :void, :GLenum ].freeze,
+    def glGenBuffers(n, buffers) end => [ :void, :GLsizei, :pointer ].freeze,
+    def glGenQueries(n, ids) end => [ :void, :GLsizei, :pointer ].freeze,
+    def glGetBufferParameteriv(target, pname, params) end => [ :void, :GLenum, :GLenum, :pointer ].freeze,
+    def glGetBufferPointerv(target, pname, params) end => [ :void, :GLenum, :GLenum, :pointer ].freeze,
+    def glGetBufferSubData(target, offset, size, data) end => [ :void, :GLenum, :GLintptr, :GLsizeiptr, :pointer ].freeze,
+    def glGetQueryObjectiv(id, pname, params) end => [ :void, :GLuint, :GLenum, :pointer ].freeze,
+    def glGetQueryObjectuiv(id, pname, params) end => [ :void, :GLuint, :GLenum, :pointer ].freeze,
+    def glGetQueryiv(target, pname, params) end => [ :void, :GLenum, :GLenum, :pointer ].freeze,
+    def glIsBuffer(buffer) end => [ :GLboolean, :GLuint ].freeze,
+    def glIsQuery(id) end => [ :GLboolean, :GLuint ].freeze,
+    def glMapBuffer(target, access) end => [ :pointer, :GLenum, :GLenum ].freeze,
+    def glUnmapBuffer(target) end => [ :GLboolean, :GLenum ].freeze,
+  }.freeze
 end

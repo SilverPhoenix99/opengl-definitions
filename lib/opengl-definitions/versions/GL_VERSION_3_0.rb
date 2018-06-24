@@ -118,119 +118,61 @@ module GL_VERSION_3_0
     :GL_ARB_vertex_array_object
   ].freeze
 
-  module Functions
-    def glBeginConditionalRender(id, mode) end
-    def glBeginTransformFeedback(primitiveMode) end
-    def glBindFragDataLocation(program, color, name) end
-    def glClampColor(target, clamp) end
-    def glClearBufferfi(buffer, drawbuffer, depth, stencil) end
-    def glClearBufferfv(buffer, drawbuffer, value) end
-    def glClearBufferiv(buffer, drawbuffer, value) end
-    def glClearBufferuiv(buffer, drawbuffer, value) end
-    def glColorMaski(index, r, g, b, a) end
-    def glDisablei(target, index) end
-    def glEnablei(target, index) end
-    def glEndConditionalRender() end
-    def glEndTransformFeedback() end
-    def glGetBooleani_v(target, index, data) end
-    def glGetFragDataLocation(program, name) end
-    def glGetStringi(name, index) end
-    def glGetTexParameterIiv(target, pname, params) end
-    def glGetTexParameterIuiv(target, pname, params) end
-    def glGetTransformFeedbackVarying(program, index, bufSize, length, size, type, name) end
-    def glGetUniformuiv(program, location, params) end
-    def glGetVertexAttribIiv(index, pname, params) end
-    def glGetVertexAttribIuiv(index, pname, params) end
-    def glIsEnabledi(target, index) end
-    def glTexParameterIiv(target, pname, params) end
-    def glTexParameterIuiv(target, pname, params) end
-    def glTransformFeedbackVaryings(program, count, varyings, bufferMode) end
-    def glUniform1ui(location, v0) end
-    def glUniform1uiv(location, count, value) end
-    def glUniform2ui(location, v0, v1) end
-    def glUniform2uiv(location, count, value) end
-    def glUniform3ui(location, v0, v1, v2) end
-    def glUniform3uiv(location, count, value) end
-    def glUniform4ui(location, v0, v1, v2, v3) end
-    def glUniform4uiv(location, count, value) end
-    def glVertexAttribI1i(index, x) end
-    def glVertexAttribI1iv(index, v) end
-    def glVertexAttribI1ui(index, x) end
-    def glVertexAttribI1uiv(index, v) end
-    def glVertexAttribI2i(index, x, y) end
-    def glVertexAttribI2iv(index, v) end
-    def glVertexAttribI2ui(index, x, y) end
-    def glVertexAttribI2uiv(index, v) end
-    def glVertexAttribI3i(index, x, y, z) end
-    def glVertexAttribI3iv(index, v) end
-    def glVertexAttribI3ui(index, x, y, z) end
-    def glVertexAttribI3uiv(index, v) end
-    def glVertexAttribI4bv(index, v) end
-    def glVertexAttribI4i(index, x, y, z, w) end
-    def glVertexAttribI4iv(index, v) end
-    def glVertexAttribI4sv(index, v) end
-    def glVertexAttribI4ubv(index, v) end
-    def glVertexAttribI4ui(index, x, y, z, w) end
-    def glVertexAttribI4uiv(index, v) end
-    def glVertexAttribI4usv(index, v) end
-    def glVertexAttribIPointer(index, size, type, stride, pointer) end
-
-    Parameters = {
-      glBeginConditionalRender:      [ :void, :GLuint, :GLenum ].freeze,
-      glBeginTransformFeedback:      [ :void, :GLenum ].freeze,
-      glBindFragDataLocation:        [ :void, :GLuint, :GLuint, :string ].freeze,
-      glClampColor:                  [ :void, :GLenum, :GLenum ].freeze,
-      glClearBufferfi:               [ :void, :GLenum, :GLint, :GLfloat, :GLint ].freeze,
-      glClearBufferfv:               [ :void, :GLenum, :GLint, :pointer ].freeze,
-      glClearBufferiv:               [ :void, :GLenum, :GLint, :pointer ].freeze,
-      glClearBufferuiv:              [ :void, :GLenum, :GLint, :pointer ].freeze,
-      glColorMaski:                  [ :void, :GLuint, :GLboolean, :GLboolean, :GLboolean, :GLboolean ].freeze,
-      glDisablei:                    [ :void, :GLenum, :GLuint ].freeze,
-      glEnablei:                     [ :void, :GLenum, :GLuint ].freeze,
-      glEndConditionalRender:        [ :void ].freeze,
-      glEndTransformFeedback:        [ :void ].freeze,
-      glGetBooleani_v:               [ :void, :GLenum, :GLuint, :pointer ].freeze,
-      glGetFragDataLocation:         [ :GLint, :GLuint, :string ].freeze,
-      glGetStringi:                  [ :string, :GLenum, :GLuint ].freeze,
-      glGetTexParameterIiv:          [ :void, :GLenum, :GLenum, :pointer ].freeze,
-      glGetTexParameterIuiv:         [ :void, :GLenum, :GLenum, :pointer ].freeze,
-      glGetTransformFeedbackVarying: [ :void, :GLuint, :GLuint, :GLsizei, :pointer, :pointer, :pointer, :string ].freeze,
-      glGetUniformuiv:               [ :void, :GLuint, :GLint, :pointer ].freeze,
-      glGetVertexAttribIiv:          [ :void, :GLuint, :GLenum, :pointer ].freeze,
-      glGetVertexAttribIuiv:         [ :void, :GLuint, :GLenum, :pointer ].freeze,
-      glIsEnabledi:                  [ :GLboolean, :GLenum, :GLuint ].freeze,
-      glTexParameterIiv:             [ :void, :GLenum, :GLenum, :pointer ].freeze,
-      glTexParameterIuiv:            [ :void, :GLenum, :GLenum, :pointer ].freeze,
-      glTransformFeedbackVaryings:   [ :void, :GLuint, :GLsizei, :pointer, :GLenum ].freeze,
-      glUniform1ui:                  [ :void, :GLint, :GLuint ].freeze,
-      glUniform1uiv:                 [ :void, :GLint, :GLsizei, :pointer ].freeze,
-      glUniform2ui:                  [ :void, :GLint, :GLuint, :GLuint ].freeze,
-      glUniform2uiv:                 [ :void, :GLint, :GLsizei, :pointer ].freeze,
-      glUniform3ui:                  [ :void, :GLint, :GLuint, :GLuint, :GLuint ].freeze,
-      glUniform3uiv:                 [ :void, :GLint, :GLsizei, :pointer ].freeze,
-      glUniform4ui:                  [ :void, :GLint, :GLuint, :GLuint, :GLuint, :GLuint ].freeze,
-      glUniform4uiv:                 [ :void, :GLint, :GLsizei, :pointer ].freeze,
-      glVertexAttribI1i:             [ :void, :GLuint, :GLint ].freeze,
-      glVertexAttribI1iv:            [ :void, :GLuint, :pointer ].freeze,
-      glVertexAttribI1ui:            [ :void, :GLuint, :GLuint ].freeze,
-      glVertexAttribI1uiv:           [ :void, :GLuint, :pointer ].freeze,
-      glVertexAttribI2i:             [ :void, :GLuint, :GLint, :GLint ].freeze,
-      glVertexAttribI2iv:            [ :void, :GLuint, :pointer ].freeze,
-      glVertexAttribI2ui:            [ :void, :GLuint, :GLuint, :GLuint ].freeze,
-      glVertexAttribI2uiv:           [ :void, :GLuint, :pointer ].freeze,
-      glVertexAttribI3i:             [ :void, :GLuint, :GLint, :GLint, :GLint ].freeze,
-      glVertexAttribI3iv:            [ :void, :GLuint, :pointer ].freeze,
-      glVertexAttribI3ui:            [ :void, :GLuint, :GLuint, :GLuint, :GLuint ].freeze,
-      glVertexAttribI3uiv:           [ :void, :GLuint, :pointer ].freeze,
-      glVertexAttribI4bv:            [ :void, :GLuint, :pointer ].freeze,
-      glVertexAttribI4i:             [ :void, :GLuint, :GLint, :GLint, :GLint, :GLint ].freeze,
-      glVertexAttribI4iv:            [ :void, :GLuint, :pointer ].freeze,
-      glVertexAttribI4sv:            [ :void, :GLuint, :pointer ].freeze,
-      glVertexAttribI4ubv:           [ :void, :GLuint, :pointer ].freeze,
-      glVertexAttribI4ui:            [ :void, :GLuint, :GLuint, :GLuint, :GLuint, :GLuint ].freeze,
-      glVertexAttribI4uiv:           [ :void, :GLuint, :pointer ].freeze,
-      glVertexAttribI4usv:           [ :void, :GLuint, :pointer ].freeze,
-      glVertexAttribIPointer:        [ :void, :GLuint, :GLint, :GLenum, :GLsizei, :pointer ].freeze
-    }.freeze
-  end
+  Functions = {
+    def glBeginConditionalRender(id, mode) end => [ :void, :GLuint, :GLenum ].freeze,
+    def glBeginTransformFeedback(primitiveMode) end => [ :void, :GLenum ].freeze,
+    def glBindFragDataLocation(program, color, name) end => [ :void, :GLuint, :GLuint, :string ].freeze,
+    def glClampColor(target, clamp) end => [ :void, :GLenum, :GLenum ].freeze,
+    def glClearBufferfi(buffer, drawbuffer, depth, stencil) end => [ :void, :GLenum, :GLint, :GLfloat, :GLint ].freeze,
+    def glClearBufferfv(buffer, drawbuffer, value) end => [ :void, :GLenum, :GLint, :pointer ].freeze,
+    def glClearBufferiv(buffer, drawbuffer, value) end => [ :void, :GLenum, :GLint, :pointer ].freeze,
+    def glClearBufferuiv(buffer, drawbuffer, value) end => [ :void, :GLenum, :GLint, :pointer ].freeze,
+    def glColorMaski(index, r, g, b, a) end => [ :void, :GLuint, :GLboolean, :GLboolean, :GLboolean, :GLboolean ].freeze,
+    def glDisablei(target, index) end => [ :void, :GLenum, :GLuint ].freeze,
+    def glEnablei(target, index) end => [ :void, :GLenum, :GLuint ].freeze,
+    def glEndConditionalRender() end => [ :void ].freeze,
+    def glEndTransformFeedback() end => [ :void ].freeze,
+    def glGetBooleani_v(target, index, data) end => [ :void, :GLenum, :GLuint, :pointer ].freeze,
+    def glGetFragDataLocation(program, name) end => [ :GLint, :GLuint, :string ].freeze,
+    def glGetStringi(name, index) end => [ :string, :GLenum, :GLuint ].freeze,
+    def glGetTexParameterIiv(target, pname, params) end => [ :void, :GLenum, :GLenum, :pointer ].freeze,
+    def glGetTexParameterIuiv(target, pname, params) end => [ :void, :GLenum, :GLenum, :pointer ].freeze,
+    def glGetTransformFeedbackVarying(program, index, bufSize, length, size, type, name) end => [ :void, :GLuint, :GLuint, :GLsizei, :pointer, :pointer, :pointer, :string ].freeze,
+    def glGetUniformuiv(program, location, params) end => [ :void, :GLuint, :GLint, :pointer ].freeze,
+    def glGetVertexAttribIiv(index, pname, params) end => [ :void, :GLuint, :GLenum, :pointer ].freeze,
+    def glGetVertexAttribIuiv(index, pname, params) end => [ :void, :GLuint, :GLenum, :pointer ].freeze,
+    def glIsEnabledi(target, index) end => [ :GLboolean, :GLenum, :GLuint ].freeze,
+    def glTexParameterIiv(target, pname, params) end => [ :void, :GLenum, :GLenum, :pointer ].freeze,
+    def glTexParameterIuiv(target, pname, params) end => [ :void, :GLenum, :GLenum, :pointer ].freeze,
+    def glTransformFeedbackVaryings(program, count, varyings, bufferMode) end => [ :void, :GLuint, :GLsizei, :pointer, :GLenum ].freeze,
+    def glUniform1ui(location, v0) end => [ :void, :GLint, :GLuint ].freeze,
+    def glUniform1uiv(location, count, value) end => [ :void, :GLint, :GLsizei, :pointer ].freeze,
+    def glUniform2ui(location, v0, v1) end => [ :void, :GLint, :GLuint, :GLuint ].freeze,
+    def glUniform2uiv(location, count, value) end => [ :void, :GLint, :GLsizei, :pointer ].freeze,
+    def glUniform3ui(location, v0, v1, v2) end => [ :void, :GLint, :GLuint, :GLuint, :GLuint ].freeze,
+    def glUniform3uiv(location, count, value) end => [ :void, :GLint, :GLsizei, :pointer ].freeze,
+    def glUniform4ui(location, v0, v1, v2, v3) end => [ :void, :GLint, :GLuint, :GLuint, :GLuint, :GLuint ].freeze,
+    def glUniform4uiv(location, count, value) end => [ :void, :GLint, :GLsizei, :pointer ].freeze,
+    def glVertexAttribI1i(index, x) end => [ :void, :GLuint, :GLint ].freeze,
+    def glVertexAttribI1iv(index, v) end => [ :void, :GLuint, :pointer ].freeze,
+    def glVertexAttribI1ui(index, x) end => [ :void, :GLuint, :GLuint ].freeze,
+    def glVertexAttribI1uiv(index, v) end => [ :void, :GLuint, :pointer ].freeze,
+    def glVertexAttribI2i(index, x, y) end => [ :void, :GLuint, :GLint, :GLint ].freeze,
+    def glVertexAttribI2iv(index, v) end => [ :void, :GLuint, :pointer ].freeze,
+    def glVertexAttribI2ui(index, x, y) end => [ :void, :GLuint, :GLuint, :GLuint ].freeze,
+    def glVertexAttribI2uiv(index, v) end => [ :void, :GLuint, :pointer ].freeze,
+    def glVertexAttribI3i(index, x, y, z) end => [ :void, :GLuint, :GLint, :GLint, :GLint ].freeze,
+    def glVertexAttribI3iv(index, v) end => [ :void, :GLuint, :pointer ].freeze,
+    def glVertexAttribI3ui(index, x, y, z) end => [ :void, :GLuint, :GLuint, :GLuint, :GLuint ].freeze,
+    def glVertexAttribI3uiv(index, v) end => [ :void, :GLuint, :pointer ].freeze,
+    def glVertexAttribI4bv(index, v) end => [ :void, :GLuint, :pointer ].freeze,
+    def glVertexAttribI4i(index, x, y, z, w) end => [ :void, :GLuint, :GLint, :GLint, :GLint, :GLint ].freeze,
+    def glVertexAttribI4iv(index, v) end => [ :void, :GLuint, :pointer ].freeze,
+    def glVertexAttribI4sv(index, v) end => [ :void, :GLuint, :pointer ].freeze,
+    def glVertexAttribI4ubv(index, v) end => [ :void, :GLuint, :pointer ].freeze,
+    def glVertexAttribI4ui(index, x, y, z, w) end => [ :void, :GLuint, :GLuint, :GLuint, :GLuint, :GLuint ].freeze,
+    def glVertexAttribI4uiv(index, v) end => [ :void, :GLuint, :pointer ].freeze,
+    def glVertexAttribI4usv(index, v) end => [ :void, :GLuint, :pointer ].freeze,
+    def glVertexAttribIPointer(index, size, type, stride, pointer) end => [ :void, :GLuint, :GLint, :GLenum, :GLsizei, :pointer ].freeze,
+  }.freeze
 end

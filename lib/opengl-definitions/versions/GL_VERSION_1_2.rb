@@ -47,17 +47,10 @@ module GL_VERSION_1_2
     :GL_ARB_imaging
   ].freeze
 
-  module Functions
-    def glCopyTexSubImage3D(target, level, xoffset, yoffset, zoffset, x, y, width, height) end
-    def glDrawRangeElements(mode, start, end_, count, type, indices) end
-    def glTexImage3D(target, level, internalformat, width, height, depth, border, format, type, pixels) end
-    def glTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels) end
-
-    Parameters = {
-      glCopyTexSubImage3D: [ :void, :GLenum, :GLint, :GLint, :GLint, :GLint, :GLint, :GLint, :GLsizei, :GLsizei ].freeze,
-      glDrawRangeElements: [ :void, :GLenum, :GLuint, :GLuint, :GLsizei, :GLenum, :pointer ].freeze,
-      glTexImage3D:        [ :void, :GLenum, :GLint, :GLint, :GLsizei, :GLsizei, :GLsizei, :GLint, :GLenum, :GLenum, :pointer ].freeze,
-      glTexSubImage3D:     [ :void, :GLenum, :GLint, :GLint, :GLint, :GLint, :GLsizei, :GLsizei, :GLsizei, :GLenum, :GLenum, :pointer ].freeze
-    }.freeze
-  end
+  Functions = {
+    def glCopyTexSubImage3D(target, level, xoffset, yoffset, zoffset, x, y, width, height) end => [ :void, :GLenum, :GLint, :GLint, :GLint, :GLint, :GLint, :GLint, :GLsizei, :GLsizei ].freeze,
+    def glDrawRangeElements(mode, start, end_, count, type, indices) end => [ :void, :GLenum, :GLuint, :GLuint, :GLsizei, :GLenum, :pointer ].freeze,
+    def glTexImage3D(target, level, internalformat, width, height, depth, border, format, type, pixels) end => [ :void, :GLenum, :GLint, :GLint, :GLsizei, :GLsizei, :GLsizei, :GLint, :GLenum, :GLenum, :pointer ].freeze,
+    def glTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels) end => [ :void, :GLenum, :GLint, :GLint, :GLint, :GLint, :GLsizei, :GLsizei, :GLsizei, :GLenum, :GLenum, :pointer ].freeze,
+  }.freeze
 end

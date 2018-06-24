@@ -15,11 +15,7 @@ module GL_VERSION_3_3
     :GL_ARB_vertex_type_2_10_10_10_rev
   ].freeze
 
-  module Functions
-    def glVertexAttribDivisor(index, divisor) end
-
-    Parameters = {
-      glVertexAttribDivisor: [ :void, :GLuint, :GLuint ].freeze
-    }.freeze
-  end
+  Functions = {
+    def glVertexAttribDivisor(index, divisor) end => [ :void, :GLuint, :GLuint ].freeze,
+  }.freeze
 end

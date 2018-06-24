@@ -31,15 +31,9 @@ module GL_VERSION_3_2
     :GL_ARB_texture_multisample
   ].freeze
 
-  module Functions
-    def glFramebufferTexture(target, attachment, texture, level) end
-    def glGetBufferParameteri64v(target, pname, params) end
-    def glGetInteger64i_v(target, index, data) end
-
-    Parameters = {
-      glFramebufferTexture:     [ :void, :GLenum, :GLenum, :GLuint, :GLint ].freeze,
-      glGetBufferParameteri64v: [ :void, :GLenum, :GLenum, :pointer ].freeze,
-      glGetInteger64i_v:        [ :void, :GLenum, :GLuint, :pointer ].freeze
-    }.freeze
-  end
+  Functions = {
+    def glFramebufferTexture(target, attachment, texture, level) end => [ :void, :GLenum, :GLenum, :GLuint, :GLint ].freeze,
+    def glGetBufferParameteri64v(target, pname, params) end => [ :void, :GLenum, :GLenum, :pointer ].freeze,
+    def glGetInteger64i_v(target, index, data) end => [ :void, :GLenum, :GLuint, :pointer ].freeze,
+  }.freeze
 end

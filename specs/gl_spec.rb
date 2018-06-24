@@ -1,7 +1,7 @@
 require 'pathname'
 require 'rspec'
 
-RSpec.describe 'Definitions' do
+RSpec.describe GL::Definitions do
 
   files = Pathname.glob("#{__dir__}/../lib/opengl-definitions/{versions,versions/compatibility,extensions}/*.rb")
 
@@ -16,22 +16,27 @@ RSpec.describe 'Definitions' do
 
       let(:functions) { subject.const_defined?(:Functions) ? subject::Functions : nil }
 
-      let(:parameters) { functions::Parameters }
-
       it 'loads without errors' do
         expect { subject }.to_not raise_error
       end
 
-      it 'has matching Functions and Parameters' do
+      it 'has same name as its file' do
+        expect(subject.name[/(^|::)\K\w+$/]).to eq f.basename('.rb').to_s
+      end
+
+      it 'only contains specific constants' do
+        expect(subject.constants - [:Compatibility, :Constants, :Callbacks, :Extensions, :Functions]).to eq []
+      end
+
+      it 'has matching Functions' do
         if functions
-          names = functions.instance_methods(false)
+          names = subject.instance_methods(false)
 
           expect(names.size).to be > 0
-          expect(names.size).to eq parameters.size
 
-          names.map { |name| functions.instance_method(name) }.each do |function|
+          names.map { |name| subject.instance_method(name) }.each do |function|
             # params - 1 due to return type
-            expect(function.arity).to eq(parameters[function.name].size - 1)
+            expect(function.arity).to eq(functions[function.name].size - 1)
           end
         end
       end

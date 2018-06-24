@@ -538,105 +538,54 @@ module GL_VERSION_1_0
     ZOOM_Y                        = 0x0D17
   end
 
-  module Functions
-    def glBlendFunc(sfactor, dfactor) end
-    def glClear(mask) end
-    def glClearColor(red, green, blue, alpha) end
-    def glClearDepth(depth) end
-    def glClearStencil(s) end
-    def glColorMask(red, green, blue, alpha) end
-    def glCullFace(mode) end
-    def glDepthFunc(func) end
-    def glDepthMask(flag) end
-    def glDepthRange(n, f) end
-    def glDisable(cap) end
-    def glDrawBuffer(buf) end
-    def glEnable(cap) end
-    def glFinish() end
-    def glFlush() end
-    def glFrontFace(mode) end
-    def glGetBooleanv(pname, data) end
-    def glGetDoublev(pname, data) end
-    def glGetError() end
-    def glGetFloatv(pname, data) end
-    def glGetIntegerv(pname, data) end
-    def glGetString(name) end
-    def glGetTexImage(target, level, format, type, pixels) end
-    def glGetTexLevelParameterfv(target, level, pname, params) end
-    def glGetTexLevelParameteriv(target, level, pname, params) end
-    def glGetTexParameterfv(target, pname, params) end
-    def glGetTexParameteriv(target, pname, params) end
-    def glHint(target, mode) end
-    def glIsEnabled(cap) end
-    def glLineWidth(width) end
-    def glLogicOp(opcode) end
-    def glPixelStoref(pname, param) end
-    def glPixelStorei(pname, param) end
-    def glPointSize(size) end
-    def glPolygonMode(face, mode) end
-    def glReadBuffer(src) end
-    def glReadPixels(x, y, width, height, format, type, pixels) end
-    def glScissor(x, y, width, height) end
-    def glStencilFunc(func, ref, mask) end
-    def glStencilMask(mask) end
-    def glStencilOp(fail, zfail, zpass) end
-    def glTexImage1D(target, level, internalformat, width, border, format, type, pixels) end
-    def glTexImage2D(target, level, internalformat, width, height, border, format, type, pixels) end
-    def glTexParameterf(target, pname, param) end
-    def glTexParameterfv(target, pname, params) end
-    def glTexParameteri(target, pname, param) end
-    def glTexParameteriv(target, pname, params) end
-    def glViewport(x, y, width, height) end
-
-    Parameters = {
-      glBlendFunc:              [ :void, :GLenum, :GLenum ].freeze,
-      glClear:                  [ :void, :GLbitfield ].freeze,
-      glClearColor:             [ :void, :GLfloat, :GLfloat, :GLfloat, :GLfloat ].freeze,
-      glClearDepth:             [ :void, :GLdouble ].freeze,
-      glClearStencil:           [ :void, :GLint ].freeze,
-      glColorMask:              [ :void, :GLboolean, :GLboolean, :GLboolean, :GLboolean ].freeze,
-      glCullFace:               [ :void, :GLenum ].freeze,
-      glDepthFunc:              [ :void, :GLenum ].freeze,
-      glDepthMask:              [ :void, :GLboolean ].freeze,
-      glDepthRange:             [ :void, :GLdouble, :GLdouble ].freeze,
-      glDisable:                [ :void, :GLenum ].freeze,
-      glDrawBuffer:             [ :void, :GLenum ].freeze,
-      glEnable:                 [ :void, :GLenum ].freeze,
-      glFinish:                 [ :void ].freeze,
-      glFlush:                  [ :void ].freeze,
-      glFrontFace:              [ :void, :GLenum ].freeze,
-      glGetBooleanv:            [ :void, :GLenum, :pointer ].freeze,
-      glGetDoublev:             [ :void, :GLenum, :pointer ].freeze,
-      glGetError:               [ :GLenum ].freeze,
-      glGetFloatv:              [ :void, :GLenum, :pointer ].freeze,
-      glGetIntegerv:            [ :void, :GLenum, :pointer ].freeze,
-      glGetString:              [ :string, :GLenum ].freeze,
-      glGetTexImage:            [ :void, :GLenum, :GLint, :GLenum, :GLenum, :pointer ].freeze,
-      glGetTexLevelParameterfv: [ :void, :GLenum, :GLint, :GLenum, :pointer ].freeze,
-      glGetTexLevelParameteriv: [ :void, :GLenum, :GLint, :GLenum, :pointer ].freeze,
-      glGetTexParameterfv:      [ :void, :GLenum, :GLenum, :pointer ].freeze,
-      glGetTexParameteriv:      [ :void, :GLenum, :GLenum, :pointer ].freeze,
-      glHint:                   [ :void, :GLenum, :GLenum ].freeze,
-      glIsEnabled:              [ :GLboolean, :GLenum ].freeze,
-      glLineWidth:              [ :void, :GLfloat ].freeze,
-      glLogicOp:                [ :void, :GLenum ].freeze,
-      glPixelStoref:            [ :void, :GLenum, :GLfloat ].freeze,
-      glPixelStorei:            [ :void, :GLenum, :GLint ].freeze,
-      glPointSize:              [ :void, :GLfloat ].freeze,
-      glPolygonMode:            [ :void, :GLenum, :GLenum ].freeze,
-      glReadBuffer:             [ :void, :GLenum ].freeze,
-      glReadPixels:             [ :void, :GLint, :GLint, :GLsizei, :GLsizei, :GLenum, :GLenum, :pointer ].freeze,
-      glScissor:                [ :void, :GLint, :GLint, :GLsizei, :GLsizei ].freeze,
-      glStencilFunc:            [ :void, :GLenum, :GLint, :GLuint ].freeze,
-      glStencilMask:            [ :void, :GLuint ].freeze,
-      glStencilOp:              [ :void, :GLenum, :GLenum, :GLenum ].freeze,
-      glTexImage1D:             [ :void, :GLenum, :GLint, :GLint, :GLsizei, :GLint, :GLenum, :GLenum, :pointer ].freeze,
-      glTexImage2D:             [ :void, :GLenum, :GLint, :GLint, :GLsizei, :GLsizei, :GLint, :GLenum, :GLenum, :pointer ].freeze,
-      glTexParameterf:          [ :void, :GLenum, :GLenum, :GLfloat ].freeze,
-      glTexParameterfv:         [ :void, :GLenum, :GLenum, :pointer ].freeze,
-      glTexParameteri:          [ :void, :GLenum, :GLenum, :GLint ].freeze,
-      glTexParameteriv:         [ :void, :GLenum, :GLenum, :pointer ].freeze,
-      glViewport:               [ :void, :GLint, :GLint, :GLsizei, :GLsizei ].freeze
-    }.freeze
-  end
+  Functions = {
+    def glBlendFunc(sfactor, dfactor) end => [ :void, :GLenum, :GLenum ].freeze,
+    def glClear(mask) end => [ :void, :GLbitfield ].freeze,
+    def glClearColor(red, green, blue, alpha) end => [ :void, :GLfloat, :GLfloat, :GLfloat, :GLfloat ].freeze,
+    def glClearDepth(depth) end => [ :void, :GLdouble ].freeze,
+    def glClearStencil(s) end => [ :void, :GLint ].freeze,
+    def glColorMask(red, green, blue, alpha) end => [ :void, :GLboolean, :GLboolean, :GLboolean, :GLboolean ].freeze,
+    def glCullFace(mode) end => [ :void, :GLenum ].freeze,
+    def glDepthFunc(func) end => [ :void, :GLenum ].freeze,
+    def glDepthMask(flag) end => [ :void, :GLboolean ].freeze,
+    def glDepthRange(n, f) end => [ :void, :GLdouble, :GLdouble ].freeze,
+    def glDisable(cap) end => [ :void, :GLenum ].freeze,
+    def glDrawBuffer(buf) end => [ :void, :GLenum ].freeze,
+    def glEnable(cap) end => [ :void, :GLenum ].freeze,
+    def glFinish() end => [ :void ].freeze,
+    def glFlush() end => [ :void ].freeze,
+    def glFrontFace(mode) end => [ :void, :GLenum ].freeze,
+    def glGetBooleanv(pname, data) end => [ :void, :GLenum, :pointer ].freeze,
+    def glGetDoublev(pname, data) end => [ :void, :GLenum, :pointer ].freeze,
+    def glGetError() end => [ :GLenum ].freeze,
+    def glGetFloatv(pname, data) end => [ :void, :GLenum, :pointer ].freeze,
+    def glGetIntegerv(pname, data) end => [ :void, :GLenum, :pointer ].freeze,
+    def glGetString(name) end => [ :string, :GLenum ].freeze,
+    def glGetTexImage(target, level, format, type, pixels) end => [ :void, :GLenum, :GLint, :GLenum, :GLenum, :pointer ].freeze,
+    def glGetTexLevelParameterfv(target, level, pname, params) end => [ :void, :GLenum, :GLint, :GLenum, :pointer ].freeze,
+    def glGetTexLevelParameteriv(target, level, pname, params) end => [ :void, :GLenum, :GLint, :GLenum, :pointer ].freeze,
+    def glGetTexParameterfv(target, pname, params) end => [ :void, :GLenum, :GLenum, :pointer ].freeze,
+    def glGetTexParameteriv(target, pname, params) end => [ :void, :GLenum, :GLenum, :pointer ].freeze,
+    def glHint(target, mode) end => [ :void, :GLenum, :GLenum ].freeze,
+    def glIsEnabled(cap) end => [ :GLboolean, :GLenum ].freeze,
+    def glLineWidth(width) end => [ :void, :GLfloat ].freeze,
+    def glLogicOp(opcode) end => [ :void, :GLenum ].freeze,
+    def glPixelStoref(pname, param) end => [ :void, :GLenum, :GLfloat ].freeze,
+    def glPixelStorei(pname, param) end => [ :void, :GLenum, :GLint ].freeze,
+    def glPointSize(size) end => [ :void, :GLfloat ].freeze,
+    def glPolygonMode(face, mode) end => [ :void, :GLenum, :GLenum ].freeze,
+    def glReadBuffer(src) end => [ :void, :GLenum ].freeze,
+    def glReadPixels(x, y, width, height, format, type, pixels) end => [ :void, :GLint, :GLint, :GLsizei, :GLsizei, :GLenum, :GLenum, :pointer ].freeze,
+    def glScissor(x, y, width, height) end => [ :void, :GLint, :GLint, :GLsizei, :GLsizei ].freeze,
+    def glStencilFunc(func, ref, mask) end => [ :void, :GLenum, :GLint, :GLuint ].freeze,
+    def glStencilMask(mask) end => [ :void, :GLuint ].freeze,
+    def glStencilOp(fail, zfail, zpass) end => [ :void, :GLenum, :GLenum, :GLenum ].freeze,
+    def glTexImage1D(target, level, internalformat, width, border, format, type, pixels) end => [ :void, :GLenum, :GLint, :GLint, :GLsizei, :GLint, :GLenum, :GLenum, :pointer ].freeze,
+    def glTexImage2D(target, level, internalformat, width, height, border, format, type, pixels) end => [ :void, :GLenum, :GLint, :GLint, :GLsizei, :GLsizei, :GLint, :GLenum, :GLenum, :pointer ].freeze,
+    def glTexParameterf(target, pname, param) end => [ :void, :GLenum, :GLenum, :GLfloat ].freeze,
+    def glTexParameterfv(target, pname, params) end => [ :void, :GLenum, :GLenum, :pointer ].freeze,
+    def glTexParameteri(target, pname, param) end => [ :void, :GLenum, :GLenum, :GLint ].freeze,
+    def glTexParameteriv(target, pname, params) end => [ :void, :GLenum, :GLenum, :pointer ].freeze,
+    def glViewport(x, y, width, height) end => [ :void, :GLint, :GLint, :GLsizei, :GLsizei ].freeze,
+  }.freeze
 end

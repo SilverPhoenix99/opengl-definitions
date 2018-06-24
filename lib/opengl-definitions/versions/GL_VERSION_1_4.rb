@@ -41,23 +41,13 @@ module GL_VERSION_1_4
     TEXTURE_LOD_BIAS              = 0x8501
   end
 
-  module Functions
-    def glBlendFuncSeparate(sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha) end
-    def glMultiDrawArrays(mode, first, count, drawcount) end
-    def glMultiDrawElements(mode, count, type, indices, drawcount) end
-    def glPointParameterf(pname, param) end
-    def glPointParameterfv(pname, params) end
-    def glPointParameteri(pname, param) end
-    def glPointParameteriv(pname, params) end
-
-    Parameters = {
-      glBlendFuncSeparate: [ :void, :GLenum, :GLenum, :GLenum, :GLenum ].freeze,
-      glMultiDrawArrays:   [ :void, :GLenum, :pointer, :pointer, :GLsizei ].freeze,
-      glMultiDrawElements: [ :void, :GLenum, :pointer, :GLenum, :pointer, :GLsizei ].freeze,
-      glPointParameterf:   [ :void, :GLenum, :GLfloat ].freeze,
-      glPointParameterfv:  [ :void, :GLenum, :pointer ].freeze,
-      glPointParameteri:   [ :void, :GLenum, :GLint ].freeze,
-      glPointParameteriv:  [ :void, :GLenum, :pointer ].freeze
-    }.freeze
-  end
+  Functions = {
+    def glBlendFuncSeparate(sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha) end => [ :void, :GLenum, :GLenum, :GLenum, :GLenum ].freeze,
+    def glMultiDrawArrays(mode, first, count, drawcount) end => [ :void, :GLenum, :pointer, :pointer, :GLsizei ].freeze,
+    def glMultiDrawElements(mode, count, type, indices, drawcount) end => [ :void, :GLenum, :pointer, :GLenum, :pointer, :GLsizei ].freeze,
+    def glPointParameterf(pname, param) end => [ :void, :GLenum, :GLfloat ].freeze,
+    def glPointParameterfv(pname, params) end => [ :void, :GLenum, :pointer ].freeze,
+    def glPointParameteri(pname, param) end => [ :void, :GLenum, :GLint ].freeze,
+    def glPointParameteriv(pname, params) end => [ :void, :GLenum, :pointer ].freeze,
+  }.freeze
 end

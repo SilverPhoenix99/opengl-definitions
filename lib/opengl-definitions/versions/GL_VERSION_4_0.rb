@@ -28,19 +28,11 @@ module GL_VERSION_4_0
     :GL_ARB_transform_feedback3
   ].freeze
 
-  module Functions
-    def glBlendEquationi(buf, mode) end
-    def glBlendEquationSeparatei(buf, modeRGB, modeAlpha) end
-    def glBlendFunci(buf, src, dst) end
-    def glBlendFuncSeparatei(buf, srcRGB, dstRGB, srcAlpha, dstAlpha) end
-    def glMinSampleShading(value) end
-
-    Parameters = {
-      glBlendEquationi:         [ :void, :GLuint, :GLenum ].freeze,
-      glBlendEquationSeparatei: [ :void, :GLuint, :GLenum, :GLenum ].freeze,
-      glBlendFunci:             [ :void, :GLuint, :GLenum, :GLenum ].freeze,
-      glBlendFuncSeparatei:     [ :void, :GLuint, :GLenum, :GLenum, :GLenum, :GLenum ].freeze,
-      glMinSampleShading:       [ :void, :GLfloat ].freeze
-    }.freeze
-  end
+  Functions = {
+    def glBlendEquationSeparatei(buf, modeRGB, modeAlpha) end => [ :void, :GLuint, :GLenum, :GLenum ].freeze,
+    def glBlendEquationi(buf, mode) end => [ :void, :GLuint, :GLenum ].freeze,
+    def glBlendFuncSeparatei(buf, srcRGB, dstRGB, srcAlpha, dstAlpha) end => [ :void, :GLuint, :GLenum, :GLenum, :GLenum, :GLenum ].freeze,
+    def glBlendFunci(buf, src, dst) end => [ :void, :GLuint, :GLenum, :GLenum ].freeze,
+    def glMinSampleShading(value) end => [ :void, :GLfloat ].freeze,
+  }.freeze
 end

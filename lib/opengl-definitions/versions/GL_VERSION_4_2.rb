@@ -1,4 +1,4 @@
-module GL_VERSIONS_4_2
+module GL_VERSION_4_2
   Extensions = [
     :GL_ARB_base_instance,
     :GL_ARB_internalformat_query,

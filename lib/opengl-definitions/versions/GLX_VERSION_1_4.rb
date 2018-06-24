@@ -6,12 +6,8 @@ module GLX_VERSION_1_4
     SAMPLES        = 100001
   end
 
-  module Functions
-    def glXGetProcAddress(procName) end
-
-    Parameters = {
-      #void ( * glXGetProcAddress (const GLubyte *procName)) (void)
-      glXGetProcAddress: [ :pointer, :string ].freeze
-    }.freeze
-  end
+  Functions = {
+    # void ( * glXGetProcAddress (const GLubyte *procName)) (void)
+    def glXGetProcAddress(procName) end => [ :pointer, :string ].freeze
+  }.freeze
 end

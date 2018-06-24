@@ -1,14 +1,7 @@
 <% unless ext.functions.empty? %>
-module Functions
+Functions = {
   <% ext.functions.each do |_, fun| %>
-  def <%= fun.signature %> end
+  def <%= fun.signature %> end => [ <%= fun.mapped_params %> ].freeze,
   <% end %>
-
-  Parameters = {
-    <% max_len = ext.max_function_name_length %>
-    <% ext.functions.each do |_, fun| %>
-    <%= fun.mapped(max_len) %>,
-    <% end %>
-  }.freeze
-end
+}.freeze
 <% end %>

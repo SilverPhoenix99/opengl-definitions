@@ -87,195 +87,99 @@ module GL_VERSION_2_0
     VERTEX_SHADER                    = 0x8B31
   end
 
-  module Functions
-    def glAttachShader(program, shader) end
-    def glBindAttribLocation(program, index, name) end
-    def glBlendEquationSeparate(modeRGB, modeAlpha) end
-    def glCompileShader(shader) end
-    def glCreateProgram() end
-    def glCreateShader(type) end
-    def glDeleteProgram(program) end
-    def glDeleteShader(shader) end
-    def glDetachShader(program, shader) end
-    def glDisableVertexAttribArray(index) end
-    def glDrawBuffers(n, bufs) end
-    def glEnableVertexAttribArray(index) end
-    def glGetActiveAttrib(program, index, bufSize, length, size, type, name) end
-    def glGetActiveUniform(program, index, bufSize, length, size, type, name) end
-    def glGetAttachedShaders(program, maxCount, count, shaders) end
-    def glGetAttribLocation(program, name) end
-    def glGetProgramInfoLog(program, bufSize, length, infoLog) end
-    def glGetProgramiv(program, pname, params) end
-    def glGetShaderInfoLog(shader, bufSize, length, infoLog) end
-    def glGetShaderiv(shader, pname, params) end
-    def glGetShaderSource(shader, bufSize, length, source) end
-    def glGetUniformfv(program, location, params) end
-    def glGetUniformiv(program, location, params) end
-    def glGetUniformLocation(program, name) end
-    def glGetVertexAttribdv(index, pname, params) end
-    def glGetVertexAttribfv(index, pname, params) end
-    def glGetVertexAttribiv(index, pname, params) end
-    def glGetVertexAttribPointerv(index, pname, pointer) end
-    def glIsProgram(program) end
-    def glIsShader(shader) end
-    def glLinkProgram(program) end
-    def glShaderSource(shader, count, string, length) end
-    def glStencilFuncSeparate(face, func, ref, mask) end
-    def glStencilMaskSeparate(face, mask) end
-    def glStencilOpSeparate(face, sfail, dpfail, dppass) end
-    def glUniform1f(location, v0) end
-    def glUniform1fv(location, count, value) end
-    def glUniform1i(location, v0) end
-    def glUniform1iv(location, count, value) end
-    def glUniform2f(location, v0, v1) end
-    def glUniform2fv(location, count, value) end
-    def glUniform2i(location, v0, v1) end
-    def glUniform2iv(location, count, value) end
-    def glUniform3f(location, v0, v1, v2) end
-    def glUniform3fv(location, count, value) end
-    def glUniform3i(location, v0, v1, v2) end
-    def glUniform3iv(location, count, value) end
-    def glUniform4f(location, v0, v1, v2, v3) end
-    def glUniform4fv(location, count, value) end
-    def glUniform4i(location, v0, v1, v2, v3) end
-    def glUniform4iv(location, count, value) end
-    def glUniformMatrix2fv(location, count, transpose, value) end
-    def glUniformMatrix3fv(location, count, transpose, value) end
-    def glUniformMatrix4fv(location, count, transpose, value) end
-    def glUseProgram(program) end
-    def glValidateProgram(program) end
-    def glVertexAttrib1d(index, x) end
-    def glVertexAttrib1dv(index, v) end
-    def glVertexAttrib1f(index, x) end
-    def glVertexAttrib1fv(index, v) end
-    def glVertexAttrib1s(index, x) end
-    def glVertexAttrib1sv(index, v) end
-    def glVertexAttrib2d(index, x, y) end
-    def glVertexAttrib2dv(index, v) end
-    def glVertexAttrib2f(index, x, y) end
-    def glVertexAttrib2fv(index, v) end
-    def glVertexAttrib2s(index, x, y) end
-    def glVertexAttrib2sv(index, v) end
-    def glVertexAttrib3d(index, x, y, z) end
-    def glVertexAttrib3dv(index, v) end
-    def glVertexAttrib3f(index, x, y, z) end
-    def glVertexAttrib3fv(index, v) end
-    def glVertexAttrib3s(index, x, y, z) end
-    def glVertexAttrib3sv(index, v) end
-    def glVertexAttrib4bv(index, v) end
-    def glVertexAttrib4d(index, x, y, z, w) end
-    def glVertexAttrib4dv(index, v) end
-    def glVertexAttrib4f(index, x, y, z, w) end
-    def glVertexAttrib4fv(index, v) end
-    def glVertexAttrib4iv(index, v) end
-    def glVertexAttrib4Nbv(index, v) end
-    def glVertexAttrib4Niv(index, v) end
-    def glVertexAttrib4Nsv(index, v) end
-    def glVertexAttrib4Nub(index, x, y, z, w) end
-    def glVertexAttrib4Nubv(index, v) end
-    def glVertexAttrib4Nuiv(index, v) end
-    def glVertexAttrib4Nusv(index, v) end
-    def glVertexAttrib4s(index, x, y, z, w) end
-    def glVertexAttrib4sv(index, v) end
-    def glVertexAttrib4ubv(index, v) end
-    def glVertexAttrib4uiv(index, v) end
-    def glVertexAttrib4usv(index, v) end
-    def glVertexAttribPointer(index, size, type, normalized, stride, pointer) end
-
-    Parameters = {
-      glAttachShader:             [ :void, :GLuint, :GLuint ].freeze,
-      glBindAttribLocation:       [ :void, :GLuint, :GLuint, :string ].freeze,
-      glBlendEquationSeparate:    [ :void, :GLenum, :GLenum ].freeze,
-      glCompileShader:            [ :void, :GLuint ].freeze,
-      glCreateProgram:            [ :GLuint ].freeze,
-      glCreateShader:             [ :GLuint, :GLenum ].freeze,
-      glDeleteProgram:            [ :void, :GLuint ].freeze,
-      glDeleteShader:             [ :void, :GLuint ].freeze,
-      glDetachShader:             [ :void, :GLuint, :GLuint ].freeze,
-      glDisableVertexAttribArray: [ :void, :GLuint ].freeze,
-      glDrawBuffers:              [ :void, :GLsizei, :pointer ].freeze,
-      glEnableVertexAttribArray:  [ :void, :GLuint ].freeze,
-      glGetActiveAttrib:          [ :void, :GLuint, :GLuint, :GLsizei, :pointer, :pointer, :pointer, :string ].freeze,
-      glGetActiveUniform:         [ :void, :GLuint, :GLuint, :GLsizei, :pointer, :pointer, :pointer, :string ].freeze,
-      glGetAttachedShaders:       [ :void, :GLuint, :GLsizei, :pointer, :pointer ].freeze,
-      glGetAttribLocation:        [ :GLint, :GLuint, :string ].freeze,
-      glGetProgramInfoLog:        [ :void, :GLuint, :GLsizei, :pointer, :string ].freeze,
-      glGetProgramiv:             [ :void, :GLuint, :GLenum, :pointer ].freeze,
-      glGetShaderInfoLog:         [ :void, :GLuint, :GLsizei, :pointer, :string ].freeze,
-      glGetShaderiv:              [ :void, :GLuint, :GLenum, :pointer ].freeze,
-      glGetShaderSource:          [ :void, :GLuint, :GLsizei, :pointer, :string ].freeze,
-      glGetUniformfv:             [ :void, :GLuint, :GLint, :pointer ].freeze,
-      glGetUniformiv:             [ :void, :GLuint, :GLint, :pointer ].freeze,
-      glGetUniformLocation:       [ :GLint, :GLuint, :string ].freeze,
-      glGetVertexAttribdv:        [ :void, :GLuint, :GLenum, :pointer ].freeze,
-      glGetVertexAttribfv:        [ :void, :GLuint, :GLenum, :pointer ].freeze,
-      glGetVertexAttribiv:        [ :void, :GLuint, :GLenum, :pointer ].freeze,
-      glGetVertexAttribPointerv:  [ :void, :GLuint, :GLenum, :pointer ].freeze,
-      glIsProgram:                [ :GLboolean, :GLuint ].freeze,
-      glIsShader:                 [ :GLboolean, :GLuint ].freeze,
-      glLinkProgram:              [ :void, :GLuint ].freeze,
-      glShaderSource:             [ :void, :GLuint, :GLsizei, :string, :pointer ].freeze,
-      glStencilFuncSeparate:      [ :void, :GLenum, :GLenum, :GLint, :GLuint ].freeze,
-      glStencilMaskSeparate:      [ :void, :GLenum, :GLuint ].freeze,
-      glStencilOpSeparate:        [ :void, :GLenum, :GLenum, :GLenum, :GLenum ].freeze,
-      glUniform1f:                [ :void, :GLint, :GLfloat ].freeze,
-      glUniform1fv:               [ :void, :GLint, :GLsizei, :pointer ].freeze,
-      glUniform1i:                [ :void, :GLint, :GLint ].freeze,
-      glUniform1iv:               [ :void, :GLint, :GLsizei, :pointer ].freeze,
-      glUniform2f:                [ :void, :GLint, :GLfloat, :GLfloat ].freeze,
-      glUniform2fv:               [ :void, :GLint, :GLsizei, :pointer ].freeze,
-      glUniform2i:                [ :void, :GLint, :GLint, :GLint ].freeze,
-      glUniform2iv:               [ :void, :GLint, :GLsizei, :pointer ].freeze,
-      glUniform3f:                [ :void, :GLint, :GLfloat, :GLfloat, :GLfloat ].freeze,
-      glUniform3fv:               [ :void, :GLint, :GLsizei, :pointer ].freeze,
-      glUniform3i:                [ :void, :GLint, :GLint, :GLint, :GLint ].freeze,
-      glUniform3iv:               [ :void, :GLint, :GLsizei, :pointer ].freeze,
-      glUniform4f:                [ :void, :GLint, :GLfloat, :GLfloat, :GLfloat, :GLfloat ].freeze,
-      glUniform4fv:               [ :void, :GLint, :GLsizei, :pointer ].freeze,
-      glUniform4i:                [ :void, :GLint, :GLint, :GLint, :GLint, :GLint ].freeze,
-      glUniform4iv:               [ :void, :GLint, :GLsizei, :pointer ].freeze,
-      glUniformMatrix2fv:         [ :void, :GLint, :GLsizei, :GLboolean, :pointer ].freeze,
-      glUniformMatrix3fv:         [ :void, :GLint, :GLsizei, :GLboolean, :pointer ].freeze,
-      glUniformMatrix4fv:         [ :void, :GLint, :GLsizei, :GLboolean, :pointer ].freeze,
-      glUseProgram:               [ :void, :GLuint ].freeze,
-      glValidateProgram:          [ :void, :GLuint ].freeze,
-      glVertexAttrib1d:           [ :void, :GLuint, :GLdouble ].freeze,
-      glVertexAttrib1dv:          [ :void, :GLuint, :pointer ].freeze,
-      glVertexAttrib1f:           [ :void, :GLuint, :GLfloat ].freeze,
-      glVertexAttrib1fv:          [ :void, :GLuint, :pointer ].freeze,
-      glVertexAttrib1s:           [ :void, :GLuint, :GLshort ].freeze,
-      glVertexAttrib1sv:          [ :void, :GLuint, :pointer ].freeze,
-      glVertexAttrib2d:           [ :void, :GLuint, :GLdouble, :GLdouble ].freeze,
-      glVertexAttrib2dv:          [ :void, :GLuint, :pointer ].freeze,
-      glVertexAttrib2f:           [ :void, :GLuint, :GLfloat, :GLfloat ].freeze,
-      glVertexAttrib2fv:          [ :void, :GLuint, :pointer ].freeze,
-      glVertexAttrib2s:           [ :void, :GLuint, :GLshort, :GLshort ].freeze,
-      glVertexAttrib2sv:          [ :void, :GLuint, :pointer ].freeze,
-      glVertexAttrib3d:           [ :void, :GLuint, :GLdouble, :GLdouble, :GLdouble ].freeze,
-      glVertexAttrib3dv:          [ :void, :GLuint, :pointer ].freeze,
-      glVertexAttrib3f:           [ :void, :GLuint, :GLfloat, :GLfloat, :GLfloat ].freeze,
-      glVertexAttrib3fv:          [ :void, :GLuint, :pointer ].freeze,
-      glVertexAttrib3s:           [ :void, :GLuint, :GLshort, :GLshort, :GLshort ].freeze,
-      glVertexAttrib3sv:          [ :void, :GLuint, :pointer ].freeze,
-      glVertexAttrib4bv:          [ :void, :GLuint, :pointer ].freeze,
-      glVertexAttrib4d:           [ :void, :GLuint, :GLdouble, :GLdouble, :GLdouble, :GLdouble ].freeze,
-      glVertexAttrib4dv:          [ :void, :GLuint, :pointer ].freeze,
-      glVertexAttrib4f:           [ :void, :GLuint, :GLfloat, :GLfloat, :GLfloat, :GLfloat ].freeze,
-      glVertexAttrib4fv:          [ :void, :GLuint, :pointer ].freeze,
-      glVertexAttrib4iv:          [ :void, :GLuint, :pointer ].freeze,
-      glVertexAttrib4Nbv:         [ :void, :GLuint, :pointer ].freeze,
-      glVertexAttrib4Niv:         [ :void, :GLuint, :pointer ].freeze,
-      glVertexAttrib4Nsv:         [ :void, :GLuint, :pointer ].freeze,
-      glVertexAttrib4Nub:         [ :void, :GLuint, :GLubyte, :GLubyte, :GLubyte, :GLubyte ].freeze,
-      glVertexAttrib4Nubv:        [ :void, :GLuint, :pointer ].freeze,
-      glVertexAttrib4Nuiv:        [ :void, :GLuint, :pointer ].freeze,
-      glVertexAttrib4Nusv:        [ :void, :GLuint, :pointer ].freeze,
-      glVertexAttrib4s:           [ :void, :GLuint, :GLshort, :GLshort, :GLshort, :GLshort ].freeze,
-      glVertexAttrib4sv:          [ :void, :GLuint, :pointer ].freeze,
-      glVertexAttrib4ubv:         [ :void, :GLuint, :pointer ].freeze,
-      glVertexAttrib4uiv:         [ :void, :GLuint, :pointer ].freeze,
-      glVertexAttrib4usv:         [ :void, :GLuint, :pointer ].freeze,
-      glVertexAttribPointer:      [ :void, :GLuint, :GLint, :GLenum, :GLboolean, :GLsizei, :pointer ].freeze
-    }.freeze
-  end
+  Functions = {
+    def glAttachShader(program, shader) end => [ :void, :GLuint, :GLuint ].freeze,
+    def glBindAttribLocation(program, index, name) end => [ :void, :GLuint, :GLuint, :string ].freeze,
+    def glBlendEquationSeparate(modeRGB, modeAlpha) end => [ :void, :GLenum, :GLenum ].freeze,
+    def glCompileShader(shader) end => [ :void, :GLuint ].freeze,
+    def glCreateProgram() end => [ :GLuint ].freeze,
+    def glCreateShader(type) end => [ :GLuint, :GLenum ].freeze,
+    def glDeleteProgram(program) end => [ :void, :GLuint ].freeze,
+    def glDeleteShader(shader) end => [ :void, :GLuint ].freeze,
+    def glDetachShader(program, shader) end => [ :void, :GLuint, :GLuint ].freeze,
+    def glDisableVertexAttribArray(index) end => [ :void, :GLuint ].freeze,
+    def glDrawBuffers(n, bufs) end => [ :void, :GLsizei, :pointer ].freeze,
+    def glEnableVertexAttribArray(index) end => [ :void, :GLuint ].freeze,
+    def glGetActiveAttrib(program, index, bufSize, length, size, type, name) end => [ :void, :GLuint, :GLuint, :GLsizei, :pointer, :pointer, :pointer, :string ].freeze,
+    def glGetActiveUniform(program, index, bufSize, length, size, type, name) end => [ :void, :GLuint, :GLuint, :GLsizei, :pointer, :pointer, :pointer, :string ].freeze,
+    def glGetAttachedShaders(program, maxCount, count, shaders) end => [ :void, :GLuint, :GLsizei, :pointer, :pointer ].freeze,
+    def glGetAttribLocation(program, name) end => [ :GLint, :GLuint, :string ].freeze,
+    def glGetProgramInfoLog(program, bufSize, length, infoLog) end => [ :void, :GLuint, :GLsizei, :pointer, :string ].freeze,
+    def glGetProgramiv(program, pname, params) end => [ :void, :GLuint, :GLenum, :pointer ].freeze,
+    def glGetShaderInfoLog(shader, bufSize, length, infoLog) end => [ :void, :GLuint, :GLsizei, :pointer, :string ].freeze,
+    def glGetShaderSource(shader, bufSize, length, source) end => [ :void, :GLuint, :GLsizei, :pointer, :string ].freeze,
+    def glGetShaderiv(shader, pname, params) end => [ :void, :GLuint, :GLenum, :pointer ].freeze,
+    def glGetUniformLocation(program, name) end => [ :GLint, :GLuint, :string ].freeze,
+    def glGetUniformfv(program, location, params) end => [ :void, :GLuint, :GLint, :pointer ].freeze,
+    def glGetUniformiv(program, location, params) end => [ :void, :GLuint, :GLint, :pointer ].freeze,
+    def glGetVertexAttribPointerv(index, pname, pointer) end => [ :void, :GLuint, :GLenum, :pointer ].freeze,
+    def glGetVertexAttribdv(index, pname, params) end => [ :void, :GLuint, :GLenum, :pointer ].freeze,
+    def glGetVertexAttribfv(index, pname, params) end => [ :void, :GLuint, :GLenum, :pointer ].freeze,
+    def glGetVertexAttribiv(index, pname, params) end => [ :void, :GLuint, :GLenum, :pointer ].freeze,
+    def glIsProgram(program) end => [ :GLboolean, :GLuint ].freeze,
+    def glIsShader(shader) end => [ :GLboolean, :GLuint ].freeze,
+    def glLinkProgram(program) end => [ :void, :GLuint ].freeze,
+    def glShaderSource(shader, count, string, length) end => [ :void, :GLuint, :GLsizei, :string, :pointer ].freeze,
+    def glStencilFuncSeparate(face, func, ref, mask) end => [ :void, :GLenum, :GLenum, :GLint, :GLuint ].freeze,
+    def glStencilMaskSeparate(face, mask) end => [ :void, :GLenum, :GLuint ].freeze,
+    def glStencilOpSeparate(face, sfail, dpfail, dppass) end => [ :void, :GLenum, :GLenum, :GLenum, :GLenum ].freeze,
+    def glUniform1f(location, v0) end => [ :void, :GLint, :GLfloat ].freeze,
+    def glUniform1fv(location, count, value) end => [ :void, :GLint, :GLsizei, :pointer ].freeze,
+    def glUniform1i(location, v0) end => [ :void, :GLint, :GLint ].freeze,
+    def glUniform1iv(location, count, value) end => [ :void, :GLint, :GLsizei, :pointer ].freeze,
+    def glUniform2f(location, v0, v1) end => [ :void, :GLint, :GLfloat, :GLfloat ].freeze,
+    def glUniform2fv(location, count, value) end => [ :void, :GLint, :GLsizei, :pointer ].freeze,
+    def glUniform2i(location, v0, v1) end => [ :void, :GLint, :GLint, :GLint ].freeze,
+    def glUniform2iv(location, count, value) end => [ :void, :GLint, :GLsizei, :pointer ].freeze,
+    def glUniform3f(location, v0, v1, v2) end => [ :void, :GLint, :GLfloat, :GLfloat, :GLfloat ].freeze,
+    def glUniform3fv(location, count, value) end => [ :void, :GLint, :GLsizei, :pointer ].freeze,
+    def glUniform3i(location, v0, v1, v2) end => [ :void, :GLint, :GLint, :GLint, :GLint ].freeze,
+    def glUniform3iv(location, count, value) end => [ :void, :GLint, :GLsizei, :pointer ].freeze,
+    def glUniform4f(location, v0, v1, v2, v3) end => [ :void, :GLint, :GLfloat, :GLfloat, :GLfloat, :GLfloat ].freeze,
+    def glUniform4fv(location, count, value) end => [ :void, :GLint, :GLsizei, :pointer ].freeze,
+    def glUniform4i(location, v0, v1, v2, v3) end => [ :void, :GLint, :GLint, :GLint, :GLint, :GLint ].freeze,
+    def glUniform4iv(location, count, value) end => [ :void, :GLint, :GLsizei, :pointer ].freeze,
+    def glUniformMatrix2fv(location, count, transpose, value) end => [ :void, :GLint, :GLsizei, :GLboolean, :pointer ].freeze,
+    def glUniformMatrix3fv(location, count, transpose, value) end => [ :void, :GLint, :GLsizei, :GLboolean, :pointer ].freeze,
+    def glUniformMatrix4fv(location, count, transpose, value) end => [ :void, :GLint, :GLsizei, :GLboolean, :pointer ].freeze,
+    def glUseProgram(program) end => [ :void, :GLuint ].freeze,
+    def glValidateProgram(program) end => [ :void, :GLuint ].freeze,
+    def glVertexAttrib1d(index, x) end => [ :void, :GLuint, :GLdouble ].freeze,
+    def glVertexAttrib1dv(index, v) end => [ :void, :GLuint, :pointer ].freeze,
+    def glVertexAttrib1f(index, x) end => [ :void, :GLuint, :GLfloat ].freeze,
+    def glVertexAttrib1fv(index, v) end => [ :void, :GLuint, :pointer ].freeze,
+    def glVertexAttrib1s(index, x) end => [ :void, :GLuint, :GLshort ].freeze,
+    def glVertexAttrib1sv(index, v) end => [ :void, :GLuint, :pointer ].freeze,
+    def glVertexAttrib2d(index, x, y) end => [ :void, :GLuint, :GLdouble, :GLdouble ].freeze,
+    def glVertexAttrib2dv(index, v) end => [ :void, :GLuint, :pointer ].freeze,
+    def glVertexAttrib2f(index, x, y) end => [ :void, :GLuint, :GLfloat, :GLfloat ].freeze,
+    def glVertexAttrib2fv(index, v) end => [ :void, :GLuint, :pointer ].freeze,
+    def glVertexAttrib2s(index, x, y) end => [ :void, :GLuint, :GLshort, :GLshort ].freeze,
+    def glVertexAttrib2sv(index, v) end => [ :void, :GLuint, :pointer ].freeze,
+    def glVertexAttrib3d(index, x, y, z) end => [ :void, :GLuint, :GLdouble, :GLdouble, :GLdouble ].freeze,
+    def glVertexAttrib3dv(index, v) end => [ :void, :GLuint, :pointer ].freeze,
+    def glVertexAttrib3f(index, x, y, z) end => [ :void, :GLuint, :GLfloat, :GLfloat, :GLfloat ].freeze,
+    def glVertexAttrib3fv(index, v) end => [ :void, :GLuint, :pointer ].freeze,
+    def glVertexAttrib3s(index, x, y, z) end => [ :void, :GLuint, :GLshort, :GLshort, :GLshort ].freeze,
+    def glVertexAttrib3sv(index, v) end => [ :void, :GLuint, :pointer ].freeze,
+    def glVertexAttrib4Nbv(index, v) end => [ :void, :GLuint, :pointer ].freeze,
+    def glVertexAttrib4Niv(index, v) end => [ :void, :GLuint, :pointer ].freeze,
+    def glVertexAttrib4Nsv(index, v) end => [ :void, :GLuint, :pointer ].freeze,
+    def glVertexAttrib4Nub(index, x, y, z, w) end => [ :void, :GLuint, :GLubyte, :GLubyte, :GLubyte, :GLubyte ].freeze,
+    def glVertexAttrib4Nubv(index, v) end => [ :void, :GLuint, :pointer ].freeze,
+    def glVertexAttrib4Nuiv(index, v) end => [ :void, :GLuint, :pointer ].freeze,
+    def glVertexAttrib4Nusv(index, v) end => [ :void, :GLuint, :pointer ].freeze,
+    def glVertexAttrib4bv(index, v) end => [ :void, :GLuint, :pointer ].freeze,
+    def glVertexAttrib4d(index, x, y, z, w) end => [ :void, :GLuint, :GLdouble, :GLdouble, :GLdouble, :GLdouble ].freeze,
+    def glVertexAttrib4dv(index, v) end => [ :void, :GLuint, :pointer ].freeze,
+    def glVertexAttrib4f(index, x, y, z, w) end => [ :void, :GLuint, :GLfloat, :GLfloat, :GLfloat, :GLfloat ].freeze,
+    def glVertexAttrib4fv(index, v) end => [ :void, :GLuint, :pointer ].freeze,
+    def glVertexAttrib4iv(index, v) end => [ :void, :GLuint, :pointer ].freeze,
+    def glVertexAttrib4s(index, x, y, z, w) end => [ :void, :GLuint, :GLshort, :GLshort, :GLshort, :GLshort ].freeze,
+    def glVertexAttrib4sv(index, v) end => [ :void, :GLuint, :pointer ].freeze,
+    def glVertexAttrib4ubv(index, v) end => [ :void, :GLuint, :pointer ].freeze,
+    def glVertexAttrib4uiv(index, v) end => [ :void, :GLuint, :pointer ].freeze,
+    def glVertexAttrib4usv(index, v) end => [ :void, :GLuint, :pointer ].freeze,
+    def glVertexAttribPointer(index, size, type, normalized, stride, pointer) end => [ :void, :GLuint, :GLint, :GLenum, :GLboolean, :GLsizei, :pointer ].freeze,
+  }.freeze
 end
