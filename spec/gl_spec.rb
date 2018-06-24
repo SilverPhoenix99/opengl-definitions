@@ -1,5 +1,5 @@
 require 'pathname'
-require 'rspec'
+require_relative 'spec_helper'
 
 RSpec.describe GL::Definitions do
 

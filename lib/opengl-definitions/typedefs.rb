@@ -1,6 +1,8 @@
 module GL
   module Definitions
+    
     TYPEDEFS = {
+      ptrdiff_t:        1.size == 4 ? :int32_t : :int64_t,
       GLbitfield:       :uint,
       GLboolean:        :uchar,
       GLbyte:           :char,
