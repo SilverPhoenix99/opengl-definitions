@@ -23,7 +23,7 @@ class Extension
       puts "Warning: constant #{@name}::#{const_name} does not have an OpenGL prefix." if warn
     end
 
-    $2 ? clean_name.prepend('N') : clean_name
+    $2.empty? ? clean_name : clean_name.prepend('N')
   end
 
   def max_constant_name_length
