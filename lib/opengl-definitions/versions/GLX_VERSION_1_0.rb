@@ -1,5 +1,5 @@
 # Unlike other extensions, functions from this module are not pointers.
-#
+
 module GLX_VERSION_1_0
   module Constants
     GLX_EXTENSION_NAME     = 'GLX'
@@ -31,6 +31,30 @@ module GLX_VERSION_1_0
     GLX_ACCUM_BLUE_SIZE    = 16
     GLX_ACCUM_ALPHA_SIZE   = 17
   end
+
+  TypeDefs = {
+    __GLXextFuncPtr:         :pointer,
+    Bool:                    :int,
+    Colormap:                :ulong,
+    DMbuffer:                :ulong,
+    GLXContext:              :pointer,
+    GLXContextID:            :ulong,
+    GLXDrawable:             :ulong,
+    GLXFBConfig:             :pointer,
+    GLXFBConfigSGIX:         :pointer,
+    GLXPbuffer:              :ulong,
+    GLXPbufferSGIX:          :ulong,
+    GLXPixmap:               :ulong,
+    GLXVideoCaptureDeviceNV: :ulong,
+    GLXVideoDeviceNV:        :uint,
+    GLXVideoSourceSGIX:      :ulong,
+    Pixmap:                  :ulong,
+    Status:                  :ulong,
+    VLNode:                  :ulong,
+    VLPath:                  :ulong,
+    VLServer:                :ulong,
+    Window:                  :ulong,
+  }.freeze
 
   Functions = {
     # XVisualInfo* glXChooseVisual (Display *dpy, int screen, int *attribList)

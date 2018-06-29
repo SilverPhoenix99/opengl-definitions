@@ -1,5 +1,5 @@
 # Unlike other extensions, functions from this module are not pointers.
-#
+
 module WGL_VERSION_1_0
   module Constants
     FONT_LINES       = 0
@@ -37,6 +37,26 @@ module WGL_VERSION_1_0
     SWAP_UNDERLAY15  = 0x40000000
     SWAPMULTIPLE_MAX = 16
   end
+
+  TypeDefs = {
+    BOOL:                 :int,
+    DWORD:                :ulong,
+    HANDLE:               :pointer,
+    HDC:                  :pointer,
+    HGLRC:                :pointer,
+    HGPUNV:               :pointer,
+    HPBUFFERARB:          :pointer,
+    HPBUFFEREXT:          :pointer,
+    HPVIDEODEV:           :pointer,
+    HVIDEOINPUTDEVICENV:  :pointer,
+    HVIDEOOUTPUTDEVICENV: :pointer,
+    INT:                  :int,
+    INT64:                :int64,
+    LPVOID:               :pointer,
+    PGPU_DEVICE:          :pointer,
+    UINT:                 :uint,
+    VOID:                 :void,
+  }.freeze
 
   Functions = {
     # HGLRC WINAPI wglCreateContext(HDC hdc)

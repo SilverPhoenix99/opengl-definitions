@@ -12,9 +12,6 @@ Gem::Specification.new do |gem|
   gem.files         = Dir['lib/**/*.rb']
   gem.require_paths = ['lib']
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
-  gem.add_development_dependency 'erubis', '~> 2'
-  gem.add_development_dependency 'oga', '~> 2'
-  gem.add_development_dependency 'rspec', '~> 3'
   gem.post_install_message = %q{Thanks for installing the OpenGL Definitions gem.
 Also check out the sister project Roglew, OpenGL bindings for Ruby.}
 end

@@ -60,54 +60,54 @@ module GLX_VERSION_1_3
 
   Functions = {
     # GLXFBConfig* glXChooseFBConfig (Display *dpy, int screen, const int *attrib_list, int *nelements)
-    def glXChooseFBConfig(dpy, screen, attrib_list, nelements) end => [ :pointer, :pointer, :int, :pointer, :pointe ].freeze,
+    def glXChooseFBConfig(dpy, screen, attrib_list, nelements) end => [ :pointer, :pointer, :int, :pointer, :pointer ].freeze,
 
     # GLXContext glXCreateNewContext (Display *dpy, GLXFBConfig config, int render_type, GLXContext share_list, Bool direct)
-    def glXCreateNewContext(dpy, config, render_type, share_list, direct) end => [ :pointer, :pointer, :pointer, :int, :pointer, :boo ].freeze,
+    def glXCreateNewContext(dpy, config, render_type, share_list, direct) end => [ :pointer, :pointer, :pointer, :int, :pointer, :bool ].freeze,
 
     # GLXPbuffer glXCreatePbuffer (Display *dpy, GLXFBConfig config, const int *attrib_list)
-    def glXCreatePbuffer(dpy, config, attrib_list) end => [ :int, :pointer, :pointer, :pointe ].freeze,
+    def glXCreatePbuffer(dpy, config, attrib_list) end => [ :int, :pointer, :pointer, :pointer ].freeze,
 
     # GLXPixmap glXCreatePixmap (Display *dpy, GLXFBConfig config, Pixmap pixmap, const int *attrib_list)
-    def glXCreatePixmap(dpy, config, pixmap, attrib_list) end => [ :int, :pointer, :pointer, :int, :pointe ].freeze,
+    def glXCreatePixmap(dpy, config, pixmap, attrib_list) end => [ :int, :pointer, :pointer, :int, :pointer ].freeze,
 
     # GLXWindow glXCreateWindow (Display *dpy, GLXFBConfig config, Window win, const int *attrib_list)
-    def glXCreateWindow(dpy, config, win, attrib_list) end => [ :int, :pointer, :pointer, :int, :pointe ].freeze,
+    def glXCreateWindow(dpy, config, win, attrib_list) end => [ :int, :pointer, :pointer, :int, :pointer ].freeze,
 
     # void glXDestroyPbuffer (Display *dpy, GLXPbuffer pbuf)
-    def glXDestroyPbuffer(dpy, pbuf) end => [ :void, :pointer, :in ].freeze,
+    def glXDestroyPbuffer(dpy, pbuf) end => [ :void, :pointer, :int ].freeze,
 
     # void glXDestroyPixmap (Display *dpy, GLXPixmap pixmap)
-    def glXDestroyPixmap(dpy, pixmap) end => [ :void, :pointer, :in ].freeze,
+    def glXDestroyPixmap(dpy, pixmap) end => [ :void, :pointer, :int ].freeze,
 
     # void glXDestroyWindow (Display *dpy, GLXWindow win)
-    def glXDestroyWindow(dpy, win) end => [ :void, :pointer, :in ].freeze,
+    def glXDestroyWindow(dpy, win) end => [ :void, :pointer, :int ].freeze,
 
     # GLXDrawable glXGetCurrentReadDrawable (void)
     def glXGetCurrentReadDrawable() end => [ :int ].freeze,
 
     # int glXGetFBConfigAttrib (Display *dpy, GLXFBConfig config, int attribute, int *value)
-    def glXGetFBConfigAttrib(dpy, config, attribute, value) end => [ :int, :pointer, :pointer, :int, :pointe ].freeze,
+    def glXGetFBConfigAttrib(dpy, config, attribute, value) end => [ :int, :pointer, :pointer, :int, :pointer ].freeze,
 
     # GLXFBConfig* glXGetFBConfigs (Display *dpy, int screen, int *nelements)
-    def glXGetFBConfigs(dpy, screen, nelements) end => [ :pointer, :pointer, :int, :pointe ].freeze,
+    def glXGetFBConfigs(dpy, screen, nelements) end => [ :pointer, :pointer, :int, :pointer ].freeze,
 
     # void glXGetSelectedEvent (Display *dpy, GLXDrawable draw, unsigned long *event_mask)
-    def glXGetSelectedEvent(dpy, draw, event_mask) end => [ :void, :pointer, :int, :pointe ].freeze,
+    def glXGetSelectedEvent(dpy, draw, event_mask) end => [ :void, :pointer, :int, :pointer ].freeze,
 
     # XVisualInfo* glXGetVisualFromFBConfig (Display *dpy, GLXFBConfig config)
     def glXGetVisualFromFBConfig(dpy, config) end => [ :pointer, :pointer, :pointer ].freeze,
 
     # Bool glXMakeContextCurrent (Display *display, GLXDrawable draw, GLXDrawable read, GLXContext ctx)
-    def glXMakeContextCurrent(dpy, draw, read, ctx) end => [ :bool, :pointer, :int, :int, :pointe ].freeze,
+    def glXMakeContextCurrent(dpy, draw, read, ctx) end => [ :bool, :pointer, :int, :int, :pointer ].freeze,
 
     # int glXQueryContext (Display *dpy, GLXContext ctx, int attribute, int *value)
-    def glXQueryContext(dpy, ctx, attribute, value) end => [ :int, :pointer, :pointer, :int, :pointe ].freeze,
+    def glXQueryContext(dpy, ctx, attribute, value) end => [ :int, :pointer, :pointer, :int, :pointer ].freeze,
 
     # void glXQueryDrawable (Display *dpy, GLXDrawable draw, int attribute, unsigned int *value)
-    def glXQueryDrawable(dpy, draw, attribute, value) end => [ :void, :pointer, :int, :int, :pointe ].freeze,
+    def glXQueryDrawable(dpy, draw, attribute, value) end => [ :void, :pointer, :int, :int, :pointer ].freeze,
 
     # void glXSelectEvent (Display *dpy, GLXDrawable draw, unsigned long event_mask)
-    def glXSelectEvent(dpy, draw, event_mask) end => [ :void, :pointer, :int, :uin ].freeze,
+    def glXSelectEvent(dpy, draw, event_mask) end => [ :void, :pointer, :int, :uint ].freeze,
   }.freeze
 end
