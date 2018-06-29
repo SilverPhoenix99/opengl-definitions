@@ -2,34 +2,34 @@
 
 module GLX_VERSION_1_0
   module Constants
-    GLX_EXTENSION_NAME     = 'GLX'
-    GLX_PbufferClobber     = 0
-    GLX_BufferSwapComplete = 1
-    GLX_NUMBER_EVENTS      = 17
-    GLX_BAD_SCREEN         = 1
-    GLX_BAD_ATTRIBUTE      = 2
-    GLX_NO_EXTENSION       = 3
-    GLX_BAD_VISUAL         = 4
-    GLX_BAD_CONTEXT        = 5
-    GLX_BAD_VALUE          = 6
-    GLX_BAD_ENUM           = 7
-    GLX_USE_GL             = 1
-    GLX_BUFFER_SIZE        = 2
-    GLX_LEVEL              = 3
-    GLX_RGBA               = 4
-    GLX_DOUBLEBUFFER       = 5
-    GLX_STEREO             = 6
-    GLX_AUX_BUFFERS        = 7
-    GLX_RED_SIZE           = 8
-    GLX_GREEN_SIZE         = 9
-    GLX_BLUE_SIZE          = 10
-    GLX_ALPHA_SIZE         = 11
-    GLX_DEPTH_SIZE         = 12
-    GLX_STENCIL_SIZE       = 13
-    GLX_ACCUM_RED_SIZE     = 14
-    GLX_ACCUM_GREEN_SIZE   = 15
-    GLX_ACCUM_BLUE_SIZE    = 16
-    GLX_ACCUM_ALPHA_SIZE   = 17
+    EXTENSION_NAME     = 'GLX'
+    PbufferClobber     = 0
+    BufferSwapComplete = 1
+    NUMBER_EVENTS      = 17
+    BAD_SCREEN         = 1
+    BAD_ATTRIBUTE      = 2
+    NO_EXTENSION       = 3
+    BAD_VISUAL         = 4
+    BAD_CONTEXT        = 5
+    BAD_VALUE          = 6
+    BAD_ENUM           = 7
+    USE_GL             = 1
+    BUFFER_SIZE        = 2
+    LEVEL              = 3
+    RGBA               = 4
+    DOUBLEBUFFER       = 5
+    STEREO             = 6
+    AUX_BUFFERS        = 7
+    RED_SIZE           = 8
+    GREEN_SIZE         = 9
+    BLUE_SIZE          = 10
+    ALPHA_SIZE         = 11
+    DEPTH_SIZE         = 12
+    STENCIL_SIZE       = 13
+    ACCUM_RED_SIZE     = 14
+    ACCUM_GREEN_SIZE   = 15
+    ACCUM_BLUE_SIZE    = 16
+    ACCUM_ALPHA_SIZE   = 17
   end
 
   TypeDefs = {
