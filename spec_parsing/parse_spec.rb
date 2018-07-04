@@ -62,7 +62,7 @@ end
 
 extensions = EXTENSIONS.map do |_, ext|
   [ext, TYPES.map { |type| ext.send(type).length }.reduce(&:+)]
-end.keep_if { |_, count| count > 0 }
+end
 
 template = Erubis::Eruby.new(File.read(File.expand_path('templates/extension_module.erb',__dir__)));
 dir = File.expand_path('../lib/opengl-definitions/extensions', __dir__)
