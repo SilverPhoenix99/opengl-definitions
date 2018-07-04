@@ -17,9 +17,9 @@ RSpec.describe GL::Definitions do
 
     describe "Module #{f.basename('.rb')}" do
 
-      mod = Module.new.tap do |m|
-        m.module_eval(f.read)
-        break m.const_get(m.constants.first)
+      mod = Module.new do
+        module_eval(f.read)
+        break const_get(constants.first)
       end
 
       it 'loads without errors' do

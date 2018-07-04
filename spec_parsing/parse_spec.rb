@@ -1,9 +1,12 @@
 def map_value(value)
+  value = value.gsub(/\s*\bconst\b\s*/, '')
   case value
-    when /(\*|\])$/      then 'pointer'
-    when 'unsigned int'  then 'uint'
-    when 'unsigned long' then 'ulong'
-    else                      value.gsub('const ', '')
+    when /\*{2,}/             then 'pointer'
+    when /\b(?:GL)?char\s*\*/ then 'string'
+    when /[*\]]$/             then 'pointer'
+    when 'unsigned int'       then 'uint'
+    when 'unsigned long'      then 'ulong'
+    else                           value
   end
 end
 
